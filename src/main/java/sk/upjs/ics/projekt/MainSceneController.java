@@ -44,7 +44,7 @@ public class MainSceneController {
             Scene scene = new Scene(parentPane);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Metlife - druhy služieb");
+            stage.setTitle("AGRO Metlife - druhy služieb");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 

@@ -94,7 +94,7 @@ public class ZoznamReklSluziebController {
         Scene scene = new Scene(parentPane);
          Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Metlife - reklamné a záhradnícke služby");
+        stage.setTitle("AGRO Metlife - reklamné a záhradnícke služby");
         stage.show(); } catch (IOException iOException) {
             iOException.printStackTrace();
         }

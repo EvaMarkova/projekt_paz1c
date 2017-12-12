@@ -21,7 +21,7 @@ public class ProjektApp extends Application {
         Scene scene = new Scene(parentPane);
         
         stage.setScene(scene);
-        stage.setTitle("Metlife - reklamné a záhradnícke služby");
+        stage.setTitle("AGRO Metlife - reklamné a záhradnícke služby");
         stage.show();
     }
     
