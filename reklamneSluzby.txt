@@ -1,0 +1,3 @@
+id;nazov;popis;cena
+1;Ciernobiela tlac, kopirovanie;Vytlacime vam dokumenty roznych formatov v ciernobielom prevedeni;0.1
+2;Farebna tlac, kopirovanie;Vytlacime vam dokumenty roznych formatov vo farebnom prevedeni;0.5
