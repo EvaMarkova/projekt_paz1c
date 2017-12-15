@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -39,6 +41,9 @@ public class ZoznamReklSluziebController {
     
     @FXML
     private Label cenaSluzbyLabel;
+    
+    @FXML
+    private Spinner<Integer> pocetSpinner;
 
     
     @FXML
@@ -83,6 +88,11 @@ public class ZoznamReklSluziebController {
                }
             }
         });
+        
+//        SpinnerValueFactory.IntegerSpinnerValueFactory sprinnerValueFactory =  
+//                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10,1);
+        
+        
         
         homeButton.setOnAction(eh -> { MainSceneController controller = new MainSceneController();
         try {

@@ -14,4 +14,5 @@ public enum DaoFactory {
         File suborSRiadkami = new File("reklamneSluzby.txt");
         return new TextFileReklamnaSluzbaDao(suborSRiadkami);
     }
+    
 }
