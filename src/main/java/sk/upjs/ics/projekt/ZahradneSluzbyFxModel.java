@@ -15,7 +15,7 @@ public class ZahradneSluzbyFxModel {
     private Long id;
     private StringProperty nazovZahradnejSluzby = new SimpleStringProperty();
     private StringProperty popisZahradnejSluzby = new SimpleStringProperty();
-    private StringProperty cenaZahradnejSluzby = new SimpleStringProperty();
+    private Double cenaZahradnejSluzby;
 
     public ZahradneSluzbyFxModel() {
         ZahradnaSluzbaDao zahradnaSluzbaDao = DaoFactory.INSTANCE.getZahradnaSluzbaDao();
@@ -30,6 +30,16 @@ public class ZahradneSluzbyFxModel {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Double getCenaZahradnejSluzby() {
+        return cenaZahradnejSluzby;
+    }
+
+    public void setCenaZahradnejSluzby(Double cenaZahradnejSluzby) {
+        this.cenaZahradnejSluzby = cenaZahradnejSluzby;
+    }
+    
+    
 
     public String getNazovZahradnejSluzby() {
         return nazovZahradnejSluzby.get();
@@ -55,18 +65,7 @@ public class ZahradneSluzbyFxModel {
         return popisZahradnejSluzby;
     }
 
-    public String getCenaZahradnejSluzby() {
-        return cenaZahradnejSluzby.get();
-    }
-
-    public void setCenaZahradnejSluzby(String cenaZahradnejSluzby) {
-        this.cenaZahradnejSluzby.set(cenaZahradnejSluzby);
-    }
-
-    public StringProperty cenaZahradnejSluzbyProperty() {
-        return cenaZahradnejSluzby;
-    }
-
+   
     public ZahradnaSluzba getZahradnaSluzba() {
         ZahradnaSluzba zahradnaSluzba = new ZahradnaSluzba();
         zahradnaSluzba.setId(id);
@@ -80,7 +79,7 @@ public class ZahradneSluzbyFxModel {
         id = zahradnaSluzba.getId();
         setNazovZahradnejSluzby(zahradnaSluzba.getNazov());
         setPopisZahradnejSluzby(zahradnaSluzba.getPopis());
-        setCenaZahradnejSluzby(zahradnaSluzba.getCena());
+        cenaZahradnejSluzby = zahradnaSluzba.getCena();
     }
 
     public void newZahradnaSluzba() {

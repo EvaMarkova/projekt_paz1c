@@ -25,7 +25,7 @@ public class MysqlZahradnaSluzbaDao implements ZahradnaSluzbaDao {
                 zahradnaSluzba.setRocneObdobie(rs.getString("rocne_obdobie"));
                 zahradnaSluzba.setNazov(rs.getString("nazov"));
                 zahradnaSluzba.setPopis(rs.getString("popis"));
-                zahradnaSluzba.setCena(rs.getString("cena"));
+                zahradnaSluzba.setCena(rs.getDouble("cena"));
                 return zahradnaSluzba;                
             }
         });

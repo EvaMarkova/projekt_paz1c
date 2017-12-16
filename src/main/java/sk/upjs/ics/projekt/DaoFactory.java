@@ -20,7 +20,7 @@ public enum DaoFactory {
         return new MysqlZahradnaSluzbaDao(getJDBCTemplate());
     }
 
-  
+    
     
     private JdbcTemplate getJDBCTemplate() {
         if (jdbcTemplate == null) {
@@ -35,10 +35,6 @@ public enum DaoFactory {
     
     
 
-    private TextFileReklamnaSluzbaDao getTextFileReklamnaSluzbaDao() {
-        File suborSRiadkami = new File("reklamneSluzby.txt");
-        return new TextFileReklamnaSluzbaDao(suborSRiadkami);
-    }
-    
+   
     
 }

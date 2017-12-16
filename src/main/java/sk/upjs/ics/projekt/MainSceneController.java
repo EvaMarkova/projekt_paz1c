@@ -1,6 +1,5 @@
 package sk.upjs.ics.projekt;
 
-
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,14 +22,19 @@ public class MainSceneController {
          adminButton.setOnAction(eh -> {
             DruhSluzbySceneController controller = 
                     new DruhSluzbySceneController();
+            adminButton.getScene().getWindow().hide();
              showDruhSluzbyWindow(controller);
         });
+        
          zakaznikButton.setOnAction(eh -> {
              
              DruhSluzbySceneController controller = 
-                     new DruhSluzbySceneController();             
+                     new DruhSluzbySceneController();  
+             zakaznikButton.getScene().getWindow().hide();
              showDruhSluzbyWindow(controller);
-         });
+            
+         });    
+         
     }
          
          
@@ -47,6 +51,7 @@ public class MainSceneController {
             stage.setTitle("AGRO Metlife - druhy služieb");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+            
 
             // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {

@@ -34,6 +34,7 @@ public class DruhSluzbySceneController {
               stage.setScene(scene);
               stage.setTitle("AGRO Metlife - služby");
               stage.initModality(Modality.APPLICATION_MODAL);
+              zahradnickeSluzbyButton.getScene().getWindow().hide();
               stage.show(); 
               
           } catch (IOException ex) {
@@ -55,7 +56,8 @@ public class DruhSluzbySceneController {
               stage.setScene(scene);
               stage.setTitle("AGRO Metlife - služby");
               stage.initModality(Modality.APPLICATION_MODAL);
-              stage.showAndWait();
+              reklamneSluzbyButton.getScene().getWindow().hide();
+              stage.show();
           } catch (IOException ex) {
               Logger.getLogger(DruhSluzbySceneController.class.getName()).log(Level.SEVERE, null, ex);
           }

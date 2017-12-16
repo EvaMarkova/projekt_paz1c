@@ -13,6 +13,22 @@ public class MysqlReklamnaSluzbaDao implements ReklamnaSluzbaDao {
     public MysqlReklamnaSluzbaDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
+    //CREATE,UPDATE
+    @Override
+    public void save(ReklamnaSluzba reklamnaSluzba) throws DaoException {
+//        if (reklamnaSluzba == null) {
+//            return;
+//        }
+//        if (reklamnaSluzba.getId() == null) {
+//            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+//            simpleJdbcInsert.withTableName("reklamne_sluzby");
+//            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+//            simpleJdbcInsert.usingColumns("nazov","popis","cena");           
+//            
+//            
+//        }
+//        
+    }  
     
     @Override
     public List<ReklamnaSluzba> getAll() {
@@ -24,11 +40,23 @@ public class MysqlReklamnaSluzbaDao implements ReklamnaSluzbaDao {
                 reklamnaSluzba.setId(rs.getLong("id"));
                 reklamnaSluzba.setNazov(rs.getString("nazov"));
                 reklamnaSluzba.setPopis(rs.getString("popis"));
-                reklamnaSluzba.setCena(rs.getString("cena"));
+                reklamnaSluzba.setCena(rs.getDouble("cena"));
                 return reklamnaSluzba;                
             }
         });
                return reklamneSluzby;
     }
+
+    @Override
+    public boolean deleteById(Long id) {
+     String sql = "DELETE FROM reklamne_sluzby WHERE id = " + id;
+        try {
+            int zmazanych = jdbcTemplate.update(sql);
+            return zmazanych == 1;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     
 }

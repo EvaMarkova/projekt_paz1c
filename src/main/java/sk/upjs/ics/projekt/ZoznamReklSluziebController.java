@@ -1,7 +1,11 @@
 
 package sk.upjs.ics.projekt;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+import sk.upjs.ics.projekt.MainSceneController;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -9,13 +13,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.springframework.jdbc.core.JdbcTemplate;
+import sk.upjs.ics.projekt.ReklamnaSluzba;
+import sk.upjs.ics.projekt.ReklamneSluzbyFxModel;
 
 
 public class ZoznamReklSluziebController {
@@ -96,15 +105,18 @@ public class ZoznamReklSluziebController {
             }
         });
         
-//        SpinnerValueFactory.IntegerSpinnerValueFactory sprinnerValueFactory =  
-//                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10,1);
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory =
+        new SpinnerValueFactory.IntegerSpinnerValueFactory(1,Integer.MAX_VALUE,1);
+        pocetSpinner.setValueFactory(spinnerValueFactory);
+       
         
         
         
-        homeButton.setOnAction(eh -> { MainSceneController controller = new MainSceneController();
+        homeButton.setOnAction(eh -> { 
+            DruhSluzbySceneController controller = new DruhSluzbySceneController();
         try {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("MainScene.fxml"));
+                getClass().getResource("DruhSluzbyScene.fxml"));
         loader.setController(controller);
         
         Parent parentPane = loader.load();
@@ -112,9 +124,49 @@ public class ZoznamReklSluziebController {
          Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("AGRO Metlife - reklamné a záhradnícke služby");
-        stage.show(); } catch (IOException iOException) {
+        homeButton.getScene().getWindow().hide();
+        stage.show();
+        } catch (IOException iOException) {
             iOException.printStackTrace();
         }
+            
+        });
+        
+        kosikButton.setOnAction(eh -> {
+          try {
+              KosikController controller = new KosikController();
+              FXMLLoader loader = new FXMLLoader(
+                      getClass().getResource("KosikScene.fxml"));
+              loader.setController(controller);
+              
+              Parent parentPane = loader.load();
+              Scene scene = new Scene(parentPane);
+              Stage stage = new Stage();
+              stage.setScene(scene);
+              stage.setTitle("AGRO Metlife - Košík");
+              stage.initModality(Modality.APPLICATION_MODAL);
+              stage.show();               
+          } catch (IOException ex) {
+              Logger.getLogger(DruhSluzbySceneController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      });
+        
+        pridatDoKosikaButton.setOnAction(eh -> {
+            JdbcTemplate jdbcTemplate;          
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser("projekt_user");
+            dataSource.setPassword("paz1cisgreat");
+            dataSource.setDatabaseName("projekt");
+            jdbcTemplate = new JdbcTemplate(dataSource);        
+            String sql = "INSERT INTO kosik(nazov_sluzby,pocet,cena) VALUES(?,?,?)";                
+            jdbcTemplate.update(sql, reklSluzbyModel.getVybrataReklamnaSluzba().getNazov(),pocetSpinner.getValue(), 
+                      reklSluzbyModel.getVybrataReklamnaSluzba().getCena());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informácia");
+            alert.setHeaderText(null);
+            alert.setContentText("Reklamná služba bola pridaná do košíka");
+            alert.showAndWait();       
+                       
             
         });
         
