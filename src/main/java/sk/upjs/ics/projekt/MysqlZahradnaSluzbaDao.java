@@ -1,14 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.projekt;
 
-/**
- *
- * @author Evka
- */
-public class MysqlZahradnaSluzbaDao {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+public class MysqlZahradnaSluzbaDao implements ZahradnaSluzbaDao {
+    
+    private JdbcTemplate jdbcTemplate;
+    
+    public MysqlZahradnaSluzbaDao(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    @Override
+    public List<ZahradnaSluzba> getAll() {
+        String sql = "SELECT id, rocne_obdobie, nazov, popis, cena FROM zahradne_sluzby";
+        List<ZahradnaSluzba> zahradneSluzby = jdbcTemplate.query(sql,new RowMapper<ZahradnaSluzba>() {
+            @Override
+            public ZahradnaSluzba mapRow(ResultSet rs, int i) throws SQLException {
+                ZahradnaSluzba zahradnaSluzba = new ZahradnaSluzba();
+                zahradnaSluzba.setId(rs.getLong("id"));
+                zahradnaSluzba.setRocneObdobie(rs.getString("rocne_obdobie"));
+                zahradnaSluzba.setNazov(rs.getString("nazov"));
+                zahradnaSluzba.setPopis(rs.getString("popis"));
+                zahradnaSluzba.setCena(rs.getString("cena"));
+                return zahradnaSluzba;                
+            }
+        });
+               return zahradneSluzby;
+    }
     
 }

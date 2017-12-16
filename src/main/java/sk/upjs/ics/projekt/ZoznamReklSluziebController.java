@@ -44,6 +44,9 @@ public class ZoznamReklSluziebController {
     
     @FXML
     private Spinner<Integer> pocetSpinner;
+    
+    @FXML
+    private Label nazovSluzbyLabel;
 
     
     @FXML
@@ -66,6 +69,8 @@ public class ZoznamReklSluziebController {
                 }
             }
         });
+        
+        
         // ak text presiahne label, bude sa vypisovat na dalsom riadku
         popisSluzbyLabel.wrapTextProperty().setValue(true);
         popisSluzbyLabel.setAlignment(Pos.TOP_LEFT);
@@ -76,6 +81,7 @@ public class ZoznamReklSluziebController {
             reklSluzbyModel.setVybrataReklamnaSluzba(reklSluzbyModel.getReklamneSluzby().get(0));
             popisSluzbyLabel.setText(reklSluzbyModel.getReklamneSluzby().get(0).getPopis());
             cenaSluzbyLabel.setText("Cena je " +reklSluzbyModel.getReklamneSluzby().get(0).getCena()+"€ za 1 kus");
+            nazovSluzbyLabel.setText(reklSluzbyModel.getReklamneSluzby().get(0).getNazov());
         }
                 
         reklSluzbyModel.vybrataReklamnaSluzbaProperty().addListener(new ChangeListener<ReklamnaSluzba>() {
@@ -83,6 +89,7 @@ public class ZoznamReklSluziebController {
             public void changed(ObservableValue<? extends ReklamnaSluzba> ov, ReklamnaSluzba old, ReklamnaSluzba newValue) {
                 popisSluzbyLabel.setText(old.getPopis());
                 if (newValue != null) {
+                   nazovSluzbyLabel.setText(newValue.getNazov());
                    popisSluzbyLabel.setText(newValue.getPopis());
                    cenaSluzbyLabel.setText("Cena je " +newValue.getCena()+"€ za 1 kus");
                }

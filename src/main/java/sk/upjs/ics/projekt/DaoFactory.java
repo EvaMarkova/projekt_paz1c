@@ -9,12 +9,16 @@ public enum DaoFactory {
     INSTANCE;
 
     private ReklamnaSluzbaDao reklamnaSluzbaDao;
+    private ZahradnaSluzbaDao zahradnaSluzbaDao;
     private JdbcTemplate jdbcTemplate;
 
     public ReklamnaSluzbaDao getReklamnaSluzbaDao() {
         return new MysqlReklamnaSluzbaDao(getJDBCTemplate());
     }
     
+    public ZahradnaSluzbaDao getZahradnaSluzbaDao() {
+        return new MysqlZahradnaSluzbaDao(getJDBCTemplate());
+    }
 
   
     
