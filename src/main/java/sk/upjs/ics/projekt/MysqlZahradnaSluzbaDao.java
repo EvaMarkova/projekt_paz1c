@@ -29,7 +29,7 @@ public class MysqlZahradnaSluzbaDao implements ZahradnaSluzbaDao {
                 return zahradnaSluzba;                
             }
         });
-               return zahradneSluzby;
+        return zahradneSluzby;
     }
     
 }

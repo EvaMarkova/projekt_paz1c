@@ -159,18 +159,18 @@ public class ZoznamZahrSluziebController {
             dataSource.setPassword("paz1cisgreat");
             dataSource.setDatabaseName("projekt");
             jdbcTemplate = new JdbcTemplate(dataSource);        
-            String sql = "INSERT INTO kosik(nazov_sluzby,pocet,cena) VALUES(?,?,?)";                
+            String sql = "INSERT INTO kosik(nazov,pocet,cena) VALUES(?,?,?)";                
             jdbcTemplate.update(sql, zahrSluzbyModel.getVybrataZahradnaSluzba().getNazov(),pocetSpinner.getValue(), 
-                      zahrSluzbyModel.getVybrataZahradnaSluzba().getCena());
+                      pocetSpinner.getValue()*zahrSluzbyModel.getVybrataZahradnaSluzba().getCena());
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Informácia");
             alert.setHeaderText(null);
             alert.setContentText("Záhradnícka služba bola pridaná do košíka");
             alert.showAndWait();
             
-                       
-            
         });
+        
+        
        
         
     }

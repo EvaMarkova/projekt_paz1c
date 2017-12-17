@@ -2,7 +2,6 @@
 package sk.upjs.ics.projekt;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import sk.upjs.ics.projekt.MainSceneController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
-import sk.upjs.ics.projekt.ReklamnaSluzba;
-import sk.upjs.ics.projekt.ReklamneSluzbyFxModel;
+
 
 
 public class ZoznamReklSluziebController {
@@ -128,8 +126,7 @@ public class ZoznamReklSluziebController {
         stage.show();
         } catch (IOException iOException) {
             iOException.printStackTrace();
-        }
-            
+        }            
         });
         
         kosikButton.setOnAction(eh -> {
@@ -158,9 +155,9 @@ public class ZoznamReklSluziebController {
             dataSource.setPassword("paz1cisgreat");
             dataSource.setDatabaseName("projekt");
             jdbcTemplate = new JdbcTemplate(dataSource);        
-            String sql = "INSERT INTO kosik(nazov_sluzby,pocet,cena) VALUES(?,?,?)";                
-            jdbcTemplate.update(sql, reklSluzbyModel.getVybrataReklamnaSluzba().getNazov(),pocetSpinner.getValue(), 
-                      reklSluzbyModel.getVybrataReklamnaSluzba().getCena());
+            String sql = "INSERT INTO kosik(nazov,pocet,cena) VALUES(?,?,?)";                
+            jdbcTemplate.update(sql, reklSluzbyModel.getVybrataReklamnaSluzba().getNazov(), pocetSpinner.getValue(), 
+                      pocetSpinner.getValue()* reklSluzbyModel.getVybrataReklamnaSluzba().getCena());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Informácia");
             alert.setHeaderText(null);

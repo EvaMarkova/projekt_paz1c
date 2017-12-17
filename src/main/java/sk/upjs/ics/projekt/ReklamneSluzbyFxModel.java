@@ -85,7 +85,7 @@ public class ReklamneSluzbyFxModel {
         id = null;
         setNazovReklamnejSluzby(null);
         setPopisReklamnejSluzby(null);
-        setCenaReklamnejSluzby(null);
+        cenaReklamnejSluzby = 0;
 
     }
 
@@ -105,9 +105,5 @@ public class ReklamneSluzbyFxModel {
         return vybrataReklamnaSluzba.get();
     }
 
-    private void setCenaReklamnejSluzby(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
    
 }

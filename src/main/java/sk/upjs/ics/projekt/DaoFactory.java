@@ -1,7 +1,6 @@
 package sk.upjs.ics.projekt;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import java.io.File;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public enum DaoFactory {
@@ -10,6 +9,7 @@ public enum DaoFactory {
 
     private ReklamnaSluzbaDao reklamnaSluzbaDao;
     private ZahradnaSluzbaDao zahradnaSluzbaDao;
+    private RiadokKosikDao riadokKosikDao;
     private JdbcTemplate jdbcTemplate;
 
     public ReklamnaSluzbaDao getReklamnaSluzbaDao() {
@@ -18,6 +18,10 @@ public enum DaoFactory {
     
     public ZahradnaSluzbaDao getZahradnaSluzbaDao() {
         return new MysqlZahradnaSluzbaDao(getJDBCTemplate());
+    }
+    
+    public RiadokKosikDao getRiadokKosikDao() {
+        return new MysqlRiadokKosikDao(getJDBCTemplate());
     }
 
     
