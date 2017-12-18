@@ -18,6 +18,7 @@ public class ZoznamZahrSluziebAdminController {
 
     private JdbcTemplate jdbcTemplate;
     private final ZahradneSluzbyFxModel sluzbyModel = new ZahradneSluzbyFxModel();
+    private Long id;
 
     @FXML
     private TableView<ZahradnaSluzba> zoznamTableView;
@@ -86,32 +87,32 @@ public class ZoznamZahrSluziebAdminController {
             }
         });
 
-//        upravitSluzbuButton.setOnAction(eh -> {
-//            Long id = zoznamTableView.getSelectionModel().getSelectedItem().getId();
-//            System.out.println(id);
-//            
-//            UpravitZahrSluzbuController controller
-//                    = new UpravitZahrSluzbuController();
-//            upravitSluzbuButton.getScene().getWindow().hide();
-//            try {
-//
-//                FXMLLoader loader = new FXMLLoader(
-//                        getClass().getResource("UpravitZahrSluzbu.fxml"));
-//                loader.setController(controller);
-//
-//                Parent parentPane = loader.load();
-//                Scene scene = new Scene(parentPane);
-//                Stage stage = new Stage();
-//                stage.setScene(scene);
-//                stage.setTitle("AGRO Metlife - Upraviť záhradnú službu");
-//                stage.initModality(Modality.APPLICATION_MODAL);
-//                stage.show();
-//                // toto sa vykona az po zatvoreni okna
-//            } catch (IOException iOException) {
-//                iOException.printStackTrace();
-//            }
-//
-//        });
+        upravitSluzbuButton.setOnAction(eh -> {
+            id = zoznamTableView.getSelectionModel().getSelectedItem().getId();
+            System.out.println(id);
+
+            UpravitZahrSluzbuController controller
+                    = new UpravitZahrSluzbuController(id);
+            upravitSluzbuButton.getScene().getWindow().hide();
+            try {
+
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("UpravitZahrSluzbu.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("AGRO Metlife - Upraviť záhradnú službu");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+
+        });
 
         vymazatSluzbuButton.setOnAction(eh -> {
             if (jdbcTemplate == null) {

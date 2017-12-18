@@ -21,17 +21,6 @@ public class ZoznamReklSluziebAdminController {
     private ReklamneSluzbyFxModel sluzbyModel = new ReklamneSluzbyFxModel();
     private Long id;
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-    
-    
-    
-
     @FXML
     private TableView<ReklamnaSluzba> zoznamTableView;
 
@@ -50,11 +39,6 @@ public class ZoznamReklSluziebAdminController {
     @FXML
     private TableColumn<ReklamnaSluzba, String> nazovCol;
 
-    public ZoznamReklSluziebAdminController() {
-
-    }
-
- 
     @FXML
     void initialize() {
 
@@ -111,7 +95,7 @@ public class ZoznamReklSluziebAdminController {
             System.out.println(id);
             
             UpravitReklSluzbuController controller
-                    = new UpravitReklSluzbuController();
+                    = new UpravitReklSluzbuController(id);
             upravitSluzbuButton.getScene().getWindow().hide();
             try {
 

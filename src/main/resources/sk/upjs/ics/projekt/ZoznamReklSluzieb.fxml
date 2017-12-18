@@ -48,7 +48,7 @@
       <Label fx:id="cenaSluzbyLabel" layoutX="26.0" layoutY="348.0" prefHeight="29.0" prefWidth="159.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="201.66666666666666" />
       <Spinner fx:id="pocetSpinner" editable="true" layoutX="198.0" layoutY="350.0" prefHeight="25.0" prefWidth="57.0" AnchorPane.bottomAnchor="38.66666666666667" AnchorPane.rightAnchor="131.66666666666666" />
       <Label layoutX="24.0" layoutY="96.0" text=" Názov služby: " AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="283.6666666666667" />
-      <Label fx:id="nazovSluzbyLabel" layoutX="111.0" layoutY="96.0" prefHeight="17.0" prefWidth="238.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="283.6666666666667" />
+      <Label fx:id="nazovSluzbyLabel" layoutX="113.0" layoutY="96.0" prefHeight="17.0" prefWidth="246.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="28.0" />
       <Label layoutX="24.0" layoutY="152.0" text=" Popis služby: " AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="288.3333333333333" />
    </children>
 </AnchorPane>

@@ -53,10 +53,17 @@ public class VymazatZakaznikaControllerAdmin {
     public VymazatZakaznikaControllerAdmin() {
 
     }
-    
+
+    @FXML
     void initialize() {
 
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         menoCol.setCellValueFactory(new PropertyValueFactory<>("meno"));
+        priezviskoCol.setCellValueFactory(new PropertyValueFactory<>("priezvisko"));
+        adresaCol.setCellValueFactory(new PropertyValueFactory<>("adresa"));
+        cisloCol.setCellValueFactory(new PropertyValueFactory<>("cislo"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        sluzbyCol.setCellValueFactory(new PropertyValueFactory<>("vybraneSluzby"));
         zoznamTableView.setItems(zakaznikModel.getZakaznici());
 
         homeButton.setOnAction(eh -> {
@@ -78,7 +85,7 @@ public class VymazatZakaznikaControllerAdmin {
             }
         });
 
-        vymazatSluzbuButton.setOnAction(eh -> {
+        vymazatZaknikaButton.setOnAction(eh -> {
             if (jdbcTemplate == null) {
                 MysqlDataSource dataSource = new MysqlDataSource();
                 dataSource.setUser("projekt_user");
@@ -87,10 +94,10 @@ public class VymazatZakaznikaControllerAdmin {
                 jdbcTemplate = new JdbcTemplate(dataSource);
             }
 
-            ReklamnaSluzba reklamnaSluzba = zoznamTableView.getSelectionModel().getSelectedItem();
+            Zakaznik zakaznik = zoznamTableView.getSelectionModel().getSelectedItem();
             String sql = "SET SQL_SAFE_UPDATES = 0";
             jdbcTemplate.update(sql);
-            sql = "DELETE FROM reklamne_sluzby WHERE id = " + reklamnaSluzba.getId();
+            sql = "DELETE FROM zakaznici WHERE id = " + zakaznik.getId();
             jdbcTemplate.update(sql);
             int selectedIndex = zoznamTableView.getSelectionModel().getSelectedIndex();
             zoznamTableView.getItems().remove(selectedIndex);

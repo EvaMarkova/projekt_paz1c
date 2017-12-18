@@ -24,12 +24,14 @@
             <Font name="Calibri" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="59.0" text=" Názov služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
-      <Label layoutX="26.0" layoutY="105.0" text="Popis služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
+      <Label layoutX="21.0" layoutY="59.0" text="Názov služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
+      <Label layoutX="21.0" layoutY="125.0" text="Popis služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
       <TextField fx:id="nazovSluzbyTextField" layoutX="119.0" layoutY="55.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
-      <TextField fx:id="popisSluzbyTextField" alignment="TOP_LEFT" layoutX="119.0" layoutY="105.0" prefHeight="167.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+      <TextField fx:id="popisSluzbyTextField" alignment="TOP_LEFT" layoutX="119.0" layoutY="125.0" prefHeight="147.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="31.0" />
       <Button fx:id="upravitSluzbuButton" layoutX="256.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" text="Upraviť službu" AnchorPane.bottomAnchor="30.666666666666664" AnchorPane.rightAnchor="31.66666666666667" />
       <Label layoutX="27.0" layoutY="299.0" text="Cena služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
       <TextField fx:id="cenaTextField" layoutX="119.0" layoutY="295.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+      <Label layoutX="20.0" layoutY="92.0" text="Ročné obdobie:" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="283.6666666666667" />
+      <TextField fx:id="rocneObdobieTextField" layoutX="119.0" layoutY="88.0" prefHeight="25.0" prefWidth="237.0" />
    </children>
 </AnchorPane>

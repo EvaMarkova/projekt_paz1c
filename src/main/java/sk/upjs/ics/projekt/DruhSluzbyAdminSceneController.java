@@ -17,6 +17,9 @@ public class DruhSluzbyAdminSceneController {
 
     @FXML
     private Button reklamneSluzbyButton;
+    
+     @FXML
+    private Button zakazniciButton;
 
     @FXML
     void initialize() {
@@ -61,6 +64,29 @@ public class DruhSluzbyAdminSceneController {
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
+        });
+        
+        zakazniciButton.setOnAction(eh -> {
+                        VymazatZakaznikaControllerAdmin controller = 
+                    new VymazatZakaznikaControllerAdmin();
+            reklamneSluzbyButton.getScene().getWindow().hide();
+               try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("ZoznamZakaznikovScene.fxml"));
+            loader.setController(controller);
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("AGRO Metlife - reklamné služby");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+                // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
+            
+            
         });
            
         

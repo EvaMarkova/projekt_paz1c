@@ -22,7 +22,7 @@ public class MysqlZakaznikDao implements ZakaznikDao {
     @Override
     public List<Zakaznik> getAll() {
         // String veciZKosika = modelRiadka.getRiadkyKosika().toString();
-        String sql = "SELECT id, meno, priezvisko, adresa, cislo, email, vybrane_sluzby FROM zakaznik";
+        String sql = "SELECT id, meno, priezvisko, adresa, cislo, email, vybrate_sluzby FROM zakaznici";
         List<Zakaznik> zakaznici = jdbcTemplate.query(sql, new RowMapper<Zakaznik>() {
             @Override
             public Zakaznik mapRow(ResultSet rs, int i) throws SQLException {
@@ -33,7 +33,7 @@ public class MysqlZakaznikDao implements ZakaznikDao {
                 zakaznik.setAdresa(rs.getString("adresa"));
                 zakaznik.setCislo(rs.getString("cislo"));
                 zakaznik.setEmail(rs.getString("email"));
-                zakaznik.setVybraneSluzby(rs.getString("vybrane_sluzby"));
+                zakaznik.setVybraneSluzby(rs.getString("vybrate_sluzby"));
                 return zakaznik;
             }
         });
