@@ -119,7 +119,7 @@ public class ZoznamZahrSluziebController {
         Scene scene = new Scene(parentPane);
          Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("AGRO Metlife - reklamné a záhradnícke služby");
+        stage.setTitle("AGRO Metlife - reklamné a záhradné služby");
         homeButton.getScene().getWindow().hide();
         stage.show(); 
         } catch (IOException iOException) {
@@ -165,7 +165,7 @@ public class ZoznamZahrSluziebController {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Informácia");
             alert.setHeaderText(null);
-            alert.setContentText("Záhradnícka služba bola pridaná do košíka");
+            alert.setContentText("Záhradná služba bola pridaná do košíka");
             alert.showAndWait();
             
         });

@@ -9,16 +9,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="133.0" layoutY="14.0" prefHeight="51.0" prefWidth="119.0" text="KOŠÍK">
+      <Label layoutX="133.0" layoutY="14.0" prefHeight="51.0" prefWidth="119.0" text="KOŠÍK" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="134.66666666666669">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <TableView fx:id="kosikTableView" layoutX="30.0" layoutY="65.0" prefHeight="174.0" prefWidth="327.0" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="nazovCol" editable="false" prefWidth="245.3333225250244" text="Názov služby" />
-          <TableColumn fx:id="pocetCol" editable="false" prefWidth="40.66668701171875" text="Počet" />
-            <TableColumn fx:id="cenaCol" editable="false" prefWidth="38.999969482421875" text="Cena" />
+            <TableColumn fx:id="idCol" maxWidth="38.0" prefWidth="38.00000190734863" text="Id" />
+          <TableColumn fx:id="nazovCol" editable="false" maxWidth="10000.0" prefWidth="203.33332061767578" text="Názov služby" />
+          <TableColumn fx:id="pocetCol" editable="false" maxWidth="43.0" prefWidth="43.33331298828125" text="Počet" />
+            <TableColumn fx:id="cenaCol" editable="false" maxWidth="42.0" prefWidth="42.6666259765625" text="Cena" />
         </columns>
       </TableView>
       <Label fx:id="vyslednaCenaTextField" layoutX="30.0" layoutY="274.0" prefHeight="38.0" prefWidth="157.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="199.66666666666666" AnchorPane.topAnchor="274.0" />

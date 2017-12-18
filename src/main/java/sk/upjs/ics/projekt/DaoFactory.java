@@ -10,6 +10,7 @@ public enum DaoFactory {
     private ReklamnaSluzbaDao reklamnaSluzbaDao;
     private ZahradnaSluzbaDao zahradnaSluzbaDao;
     private RiadokKosikDao riadokKosikDao;
+    private ZakaznikDao zakaznikDao;
     private JdbcTemplate jdbcTemplate;
 
     public ReklamnaSluzbaDao getReklamnaSluzbaDao() {
@@ -22,6 +23,10 @@ public enum DaoFactory {
     
     public RiadokKosikDao getRiadokKosikDao() {
         return new MysqlRiadokKosikDao(getJDBCTemplate());
+    }
+    
+    public ZakaznikDao getZakaznikDao() {
+        return new MysqlZakaznikDao(getJDBCTemplate());
     }
 
     

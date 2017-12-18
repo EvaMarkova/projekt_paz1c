@@ -1,3 +1,4 @@
+
 package sk.upjs.ics.projekt;
 
 import java.io.IOException;
@@ -9,66 +10,59 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainSceneController {
+public class DruhSluzbyAdminSceneController {
     
     @FXML
-    private Button adminButton;
+    private Button zahradnickeSluzbyButton;
 
     @FXML
-    private Button zakaznikButton;
-    
+    private Button reklamneSluzbyButton;
+
     @FXML
     void initialize() {
-         adminButton.setOnAction(eh -> {
-            DruhSluzbyAdminSceneController controller = 
-                    new DruhSluzbyAdminSceneController();
-            adminButton.getScene().getWindow().hide();
+        zahradnickeSluzbyButton.setOnAction(eh -> {
+            ZoznamZahrSluziebAdminController controller = 
+                    new ZoznamZahrSluziebAdminController();
+            zahradnickeSluzbyButton.getScene().getWindow().hide();
                try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("DruhSluzbyAdminScene.fxml"));
+                    getClass().getResource("ZoznamZahrSluziebAdmin.fxml"));
             loader.setController(controller);
 
             Parent parentPane = loader.load();
             Scene scene = new Scene(parentPane);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("AGRO Metlife - Druhy služieb");
+            stage.setTitle("AGRO Metlife - Záhradné služby");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-            
-
-            // toto sa vykona az po zatvoreni okna
+            stage.show();
+                // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
         });
         
-         zakaznikButton.setOnAction(eh -> {
-             
-             DruhSluzbySceneController controller = 
-                     new DruhSluzbySceneController();  
-             zakaznikButton.getScene().getWindow().hide();
+        reklamneSluzbyButton.setOnAction(eh -> {
+            ZoznamReklSluziebAdminController controller = 
+                    new ZoznamReklSluziebAdminController();
+            reklamneSluzbyButton.getScene().getWindow().hide();
                try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("DruhSluzbyScene.fxml"));
+                    getClass().getResource("ZoznamReklSluziebAdmin.fxml"));
             loader.setController(controller);
-
             Parent parentPane = loader.load();
             Scene scene = new Scene(parentPane);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("AGRO Metlife - Druhy služieb");
+            stage.setTitle("AGRO Metlife - reklamné služby");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-            
-
-            // toto sa vykona az po zatvoreni okna
+            stage.show();
+                // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
-            
-         });    
-         
+        });
+           
+        
     }
-            
 }

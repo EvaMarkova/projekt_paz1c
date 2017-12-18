@@ -16,6 +16,7 @@ public class RiadokKosikFxModel {
 
     private ObservableList<RiadokKosik> riadkyKosika;
     private ObjectProperty<RiadokKosik> vybratyRiadokKosika = new SimpleObjectProperty<>(null);
+    private Long id;
     private StringProperty nazov = new SimpleStringProperty();
     private IntegerProperty pocet = new SimpleIntegerProperty();
     private DoubleProperty cena = new SimpleDoubleProperty();
@@ -26,6 +27,15 @@ public class RiadokKosikFxModel {
         this.riadkyKosika = FXCollections.observableArrayList(riadkyKosika);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
     public StringProperty nazovProperty() {
         return nazov;
     }
@@ -63,7 +73,8 @@ public class RiadokKosikFxModel {
     }
    
     public RiadokKosik getRiadokKosik() {
-        RiadokKosik riadokKosik = new RiadokKosik();        
+        RiadokKosik riadokKosik = new RiadokKosik();
+        riadokKosik.setId(id);
         riadokKosik.setNazov(getNazov());
         riadokKosik.setPocet(getPocet());
         riadokKosik.setCena(getCena());
@@ -71,13 +82,14 @@ public class RiadokKosikFxModel {
     }
 
     public void setRiadokKosik(RiadokKosik riadokKosik) {
-       
+        id = riadokKosik.getId();
         setNazov(riadokKosik.getNazov());
         setPocet(riadokKosik.getPocet());
         setCena(riadokKosik.getCena());
     }
 
     public void newRiadokKosik() {
+        id = null;
         setNazov(null);
         setPocet(null);
         setCena(null);

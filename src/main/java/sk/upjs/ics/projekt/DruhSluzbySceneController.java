@@ -32,7 +32,7 @@ public class DruhSluzbySceneController {
               Scene scene = new Scene(parentPane);
               Stage stage = new Stage();
               stage.setScene(scene);
-              stage.setTitle("AGRO Metlife - služby");
+              stage.setTitle("AGRO Metlife - Služby");
               stage.initModality(Modality.APPLICATION_MODAL);
               zahradnickeSluzbyButton.getScene().getWindow().hide();
               stage.show(); 
@@ -54,7 +54,7 @@ public class DruhSluzbySceneController {
               
               Stage stage = new Stage();
               stage.setScene(scene);
-              stage.setTitle("AGRO Metlife - služby");
+              stage.setTitle("AGRO Metlife - Služby");
               stage.initModality(Modality.APPLICATION_MODAL);
               reklamneSluzbyButton.getScene().getWindow().hide();
               stage.show();

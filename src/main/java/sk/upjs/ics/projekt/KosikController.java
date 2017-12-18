@@ -4,16 +4,14 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.StringProperty;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -25,18 +23,6 @@ public class KosikController {
     private JdbcTemplate jdbcTemplate;
 
     private final RiadokKosikFxModel riadkyKosikModel = new RiadokKosikFxModel();
-
-    public KosikController(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
-
-    public KosikController() {
-
-    }
 
     @FXML
     private TableView<RiadokKosik> kosikTableView;
@@ -58,6 +44,9 @@ public class KosikController {
 
     @FXML
     private TableColumn<RiadokKosik, Double> cenaCol;
+    
+    @FXML
+    private TableColumn<RiadokKosik, Long> idCol;
 
     @FXML
     void initialize() {
@@ -65,31 +54,39 @@ public class KosikController {
         potvrditNakupButton.setOnAction(eh -> {
             try {
 
-                RegistracnyFormularController controller = new RegistracnyFormularController();
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("RegistracnyFormularScene.fxml"));
-                loader.setController(controller);
+                if (kosikTableView.getItems().size() > 0) {
+                    RegistracnyFormularController controller = new RegistracnyFormularController();
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("RegistracnyFormularScene.fxml"));
+                    loader.setController(controller);
 
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("AGRO Metlife - formulár");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                potvrditNakupButton.getScene().getWindow().hide();
-                stage.show();
+                    Parent parentPane = loader.load();
+                    Scene scene = new Scene(parentPane);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle("AGRO Metlife - Formulár");
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    potvrditNakupButton.getScene().getWindow().hide();
+                    stage.show();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("AGRO Metlife - Chybové hlásenie");
+                    alert.setHeaderText(null);
+                    alert.setContentText("V košíku sa nenachádzajú žiadne služby.");
+                    alert.showAndWait();
+                }
 
             } catch (IOException ex) {
                 Logger.getLogger(DruhSluzbySceneController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));        
         nazovCol.setCellValueFactory(new PropertyValueFactory<>("nazov"));
         pocetCol.setCellValueFactory(new PropertyValueFactory<>("pocet"));
         cenaCol.setCellValueFactory(new PropertyValueFactory<>("cena"));
         kosikTableView.setItems(riadkyKosikModel.getRiadkyKosika());
 
-        zmazatButton.setOnAction(eh -> {            
+        zmazatButton.setOnAction(eh -> {
             if (jdbcTemplate == null) {
                 MysqlDataSource dataSource = new MysqlDataSource();
                 dataSource.setUser("projekt_user");
@@ -100,31 +97,34 @@ public class KosikController {
             RiadokKosik riadokKosik = kosikTableView.getSelectionModel().getSelectedItem();
             String sql = "SET SQL_SAFE_UPDATES = 0";
             jdbcTemplate.update(sql);
-            sql = "DELETE FROM kosik WHERE nazov = '" + riadokKosik.getNazov() + "'";
-            jdbcTemplate.update(sql);            
-            int selectedIndex = kosikTableView.getSelectionModel().getSelectedIndex();            
-            kosikTableView.getItems().remove(selectedIndex);    
-            sql = "SELECT SUM(cena) FROM kosik"; 
-            double vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
-            vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
-        });
-        
-            if (jdbcTemplate == null) {
-                MysqlDataSource dataSource = new MysqlDataSource();
-                dataSource.setUser("projekt_user");
-                dataSource.setPassword("paz1cisgreat");
-                dataSource.setDatabaseName("projekt");
-                jdbcTemplate = new JdbcTemplate(dataSource);
+            //sql = "DELETE FROM kosik WHERE nazov = '" + riadokKosik.getNazov() + "'";
+            sql = "DELETE FROM kosik WHERE id = " + riadokKosik.getId();
+            jdbcTemplate.update(sql);
+            int selectedIndex = kosikTableView.getSelectionModel().getSelectedIndex();
+            kosikTableView.getItems().remove(selectedIndex);
+            if (kosikTableView.getItems().size() > 0) {
+                sql = "SELECT SUM(cena) FROM kosik";
+                double vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
+                vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
+            } else {
+                vyslednaCenaTextField.setText("Výsledna cena je 0€");
             }
-            String sql = "SELECT SUM(cena) FROM kosik"; 
+        });
+
+        if (jdbcTemplate == null) {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser("projekt_user");
+            dataSource.setPassword("paz1cisgreat");
+            dataSource.setDatabaseName("projekt");
+            jdbcTemplate = new JdbcTemplate(dataSource);
+        }
+        if (kosikTableView.getItems().size() > 0) {
+            String sql = "SELECT SUM(cena) FROM kosik";
             double vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
             vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
-            
-        
-        
-        
-        
-        
+        } else {
+            vyslednaCenaTextField.setText("Výsledna cena je 0€");
+        }
     }
 
 }

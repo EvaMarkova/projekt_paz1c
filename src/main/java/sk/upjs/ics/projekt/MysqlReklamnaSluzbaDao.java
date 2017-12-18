@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 public class MysqlReklamnaSluzbaDao implements ReklamnaSluzbaDao {
     
@@ -13,21 +14,24 @@ public class MysqlReklamnaSluzbaDao implements ReklamnaSluzbaDao {
     public MysqlReklamnaSluzbaDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
-    //CREATE,UPDATE
+    
     @Override
     public void save(ReklamnaSluzba reklamnaSluzba) throws DaoException {
-//        if (reklamnaSluzba == null) {
-//            return;
-//        }
-//        if (reklamnaSluzba.getId() == null) {
-//            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-//            simpleJdbcInsert.withTableName("reklamne_sluzby");
-//            simpleJdbcInsert.usingGeneratedKeyColumns("id");
-//            simpleJdbcInsert.usingColumns("nazov","popis","cena");           
-//            
-//            
-//        }
-//        
+        if (reklamnaSluzba == null) {
+            return;
+        }       
+        if (reklamnaSluzba.getId() == null) {
+            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+            simpleJdbcInsert.withTableName("reklamne_sluzby");
+            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+            simpleJdbcInsert.usingColumns("nazov","popis","cena");           
+                       
+        } else {
+             // UPDATE
+            String sql = "UPDATE reklamne_sluzby SET nazov = ?, popis = ?, cena = ?  WHERE id = " + reklamnaSluzba.getId();
+            jdbcTemplate.update(sql, reklamnaSluzba.getNazov(), reklamnaSluzba.getPopis(),reklamnaSluzba.getCena());
+        }
+        
     }  
     
     @Override

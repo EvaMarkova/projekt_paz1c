@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@house-logo-hi.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="50.0" layoutY="6.0" prefHeight="29.0" prefWidth="296.0" text="             Pridať reklamnú službu" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="6.0">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="59.0" text=" Názov služby: " AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="286.6666666666667" />
+      <Label layoutX="26.0" layoutY="105.0" text="Popis služby: " AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="289.6666666666667" />
+      <TextField fx:id="nazovSluzbyTextField" layoutX="119.0" layoutY="55.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+      <TextField fx:id="popisSluzbyTextField" alignment="TOP_LEFT" layoutX="119.0" layoutY="105.0" prefHeight="167.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+      <Button fx:id="pridatSluzbuButton" layoutX="256.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" text="Pridať službu" AnchorPane.bottomAnchor="30.666666666666664" AnchorPane.rightAnchor="31.66666666666667" />
+      <Label layoutX="27.0" layoutY="299.0" text="Cena služby: " AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="289.6666666666667" />
+      <TextField fx:id="cenaTextField" layoutX="119.0" layoutY="295.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+   </children>
+</AnchorPane>

@@ -11,8 +11,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ComboBox fx:id="zoznamCombobox" layoutX="32.0" layoutY="43.0" prefHeight="35.0" prefWidth="324.0" />
-      <Button fx:id="kosikButton" layoutX="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0">
+      <ComboBox fx:id="zoznamCombobox" layoutX="32.0" layoutY="43.0" prefHeight="35.0" prefWidth="324.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="31.0" />
+      <Button fx:id="kosikButton" layoutX="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0" AnchorPane.rightAnchor="-0.3333333333333357" AnchorPane.topAnchor="0.0">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -21,7 +21,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="pridatDoKosikaButton" layoutX="286.0" layoutY="332.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0">
+      <Button fx:id="pridatDoKosikaButton" layoutX="286.0" layoutY="332.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" AnchorPane.bottomAnchor="20.666666666666664" AnchorPane.rightAnchor="31.66666666666667">
          <graphic>
             <ImageView fitHeight="53.0" fitWidth="53.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,16 +39,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="50.0" layoutY="6.0" prefHeight="29.0" prefWidth="296.0" text="         Zoznam záhradníckych služieb">
+      <Label layoutX="50.0" layoutY="6.0" prefHeight="29.0" prefWidth="296.0" text="         Zoznam záhradných služieb">
          <font>
             <Font name="Calibri" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="popisSluzbyLabel" layoutX="113.0" layoutY="152.0" lineSpacing="2.0" prefHeight="171.0" prefWidth="246.0" />
-      <Label fx:id="cenaSluzbyLabel" layoutX="30.0" layoutY="348.0" prefHeight="29.0" prefWidth="155.0" />
-      <Spinner fx:id="pocetSpinner" editable="true" layoutX="198.0" layoutY="350.0" prefHeight="25.0" prefWidth="57.0" />
-      <Label layoutX="24.0" layoutY="96.0" text=" Názov služby: " />
-      <Label fx:id="nazovSluzbyLabel" layoutX="111.0" layoutY="96.0" prefHeight="17.0" prefWidth="238.0" />
-      <Label layoutX="24.0" layoutY="152.0" text=" Popis služby: " />
+      <Label fx:id="popisSluzbyLabel" layoutX="113.0" layoutY="152.0" lineSpacing="2.0" prefHeight="171.0" prefWidth="246.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="28.0" />
+      <Label fx:id="cenaSluzbyLabel" layoutX="30.0" layoutY="348.0" prefHeight="29.0" prefWidth="155.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="201.66666666666666" />
+      <Spinner fx:id="pocetSpinner" editable="true" layoutX="198.0" layoutY="350.0" prefHeight="25.0" prefWidth="57.0" AnchorPane.bottomAnchor="38.66666666666667" AnchorPane.rightAnchor="131.66666666666666" />
+      <Label layoutX="24.0" layoutY="96.0" text=" Názov služby: " AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="283.6666666666667" />
+      <Label fx:id="nazovSluzbyLabel" layoutX="111.0" layoutY="96.0" prefHeight="17.0" prefWidth="238.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="38.0" />
+      <Label layoutX="24.0" layoutY="152.0" text=" Popis služby: " AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="288.3333333333333" />
    </children>
 </AnchorPane>
