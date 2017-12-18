@@ -13,7 +13,7 @@ class UpravitReklSluzbuController {
 
     
      
-//    public UpravitReklSluzbuController(){
+//    public UpravitReklSluzbuController(Long id){
 //        ZoznamReklSluziebAdminController tototu = new ZoznamReklSluziebAdminController();
 //        cislo = tototu.getId();
 //    }
