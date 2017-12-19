@@ -13,6 +13,9 @@ public class Zakaznik {
     private String cislo;
     private String email;
     private String vybraneSluzby;
+    private String poctySluzieb;
+    private Double vyslednaCena;
+    
 
     public Long getId() {
         return id;
@@ -69,6 +72,25 @@ public class Zakaznik {
     public void setVybraneSluzby(String vybraneSluzby) {
         this.vybraneSluzby = vybraneSluzby;
     }
+
+    public String getPoctySluzieb() {
+        return poctySluzieb;
+    }
+
+    public void setPoctySluzieb(String poctySluzieb) {
+        this.poctySluzieb = poctySluzieb;
+    }
+    
+
+    public Double getVyslednaCena() {
+        return vyslednaCena;
+    }
+
+    public void setVyslednaCena(Double vyslednaCena) {
+        this.vyslednaCena = vyslednaCena;
+    }
+    
+    
     
     
 

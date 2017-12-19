@@ -2,6 +2,8 @@ package sk.upjs.ics.projekt;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -21,7 +23,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class KosikController {
 
     private JdbcTemplate jdbcTemplate;
-
+    private Double vyslednaCena;
+    private String poctySluzieb;
     private final RiadokKosikFxModel riadkyKosikModel = new RiadokKosikFxModel();
 
     @FXML
@@ -44,7 +47,7 @@ public class KosikController {
 
     @FXML
     private TableColumn<RiadokKosik, Double> cenaCol;
-    
+
     @FXML
     private TableColumn<RiadokKosik, Long> idCol;
 
@@ -55,11 +58,15 @@ public class KosikController {
             try {
 
                 if (kosikTableView.getItems().size() > 0) {
-                    RegistracnyFormularController controller = new RegistracnyFormularController();
+                    List<Integer> pocty = new ArrayList<>();
+                    for (RiadokKosik riadok : kosikTableView.getItems()) {
+                        pocty.add(pocetCol.getCellObservableValue(riadok).getValue());
+                    }
+                    RegistracnyFormularController controller
+                            = new RegistracnyFormularController(vyslednaCena, pocty.toString());
                     FXMLLoader loader = new FXMLLoader(
                             getClass().getResource("RegistracnyFormularScene.fxml"));
                     loader.setController(controller);
-
                     Parent parentPane = loader.load();
                     Scene scene = new Scene(parentPane);
                     Stage stage = new Stage();
@@ -80,7 +87,7 @@ public class KosikController {
                 Logger.getLogger(DruhSluzbySceneController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));        
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nazovCol.setCellValueFactory(new PropertyValueFactory<>("nazov"));
         pocetCol.setCellValueFactory(new PropertyValueFactory<>("pocet"));
         cenaCol.setCellValueFactory(new PropertyValueFactory<>("cena"));
@@ -104,7 +111,7 @@ public class KosikController {
             kosikTableView.getItems().remove(selectedIndex);
             if (kosikTableView.getItems().size() > 0) {
                 sql = "SELECT SUM(cena) FROM kosik";
-                double vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
+                vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
                 vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
             } else {
                 vyslednaCenaTextField.setText("Výsledna cena je 0€");
@@ -120,7 +127,7 @@ public class KosikController {
         }
         if (kosikTableView.getItems().size() > 0) {
             String sql = "SELECT SUM(cena) FROM kosik";
-            double vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
+            vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
             vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
         } else {
             vyslednaCenaTextField.setText("Výsledna cena je 0€");

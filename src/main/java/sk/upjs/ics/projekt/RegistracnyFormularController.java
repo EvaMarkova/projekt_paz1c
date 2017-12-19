@@ -9,6 +9,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class RegistracnyFormularController {
     private JdbcTemplate jdbcTemplate;
+    private Double cena;
+    private String poctySluzieb;
+    
+    public RegistracnyFormularController(Double cena, String poctySluzieb) {
+        this.cena = cena;
+        this.poctySluzieb = poctySluzieb;
+    }
     
     
      @FXML
@@ -46,8 +53,8 @@ public class RegistracnyFormularController {
                 jdbcTemplate = new JdbcTemplate(dataSource);
             }
             RiadokKosikFxModel model = new RiadokKosikFxModel();
-            String sql = "INSERT INTO zakaznici(meno,priezvisko,adresa,cislo,email,vybrate_sluzby) VALUES(?,?,?,?,?,?)";
-            jdbcTemplate.update(sql, meno, priezvisko, adresa, cislo, email, model.getRiadkyKosika().toString());      
+            String sql = "INSERT INTO zakaznici(meno,priezvisko,adresa,cislo,email,vybrate_sluzby,pocty_sluzieb,vysledna_cena) VALUES(?,?,?,?,?,?,?,?)";
+            jdbcTemplate.update(sql, meno, priezvisko, adresa, cislo, email, model.getRiadkyKosika().toString(),poctySluzieb,cena);      
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("AGRO Metlife - Objednávka");
                 alert.setHeaderText(null);

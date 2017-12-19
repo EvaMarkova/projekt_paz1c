@@ -1,5 +1,6 @@
 package sk.upjs.ics.projekt;
 
+
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -28,8 +29,6 @@ public enum DaoFactory {
     public ZakaznikDao getZakaznikDao() {
         return new MysqlZakaznikDao(getJDBCTemplate());
     }
-
-    
     
     private JdbcTemplate getJDBCTemplate() {
         if (jdbcTemplate == null) {

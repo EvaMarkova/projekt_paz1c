@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import sk.upjs.ics.projekt.DaoException;
+import sk.upjs.ics.projekt.RiadokKosik;
 
 public class MysqlRiadokKosikDao implements RiadokKosikDao {
 
@@ -54,7 +56,8 @@ public class MysqlRiadokKosikDao implements RiadokKosikDao {
             simpleJdbcInsert.withTableName("kosik");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
             simpleJdbcInsert.usingColumns("nazov","pocet","cena");           
-                       
+            String sql = "INSERT kosik(nazov,pocet,cena) VALUES (?,?,?)";
+            jdbcTemplate.update(sql,riadokKosik.getNazov(),riadokKosik.getPocet(),riadokKosik.getCena());         
         } else {
              // UPDATE
             String sql = "UPDATE kosik SET nazov = ?,pocet= ?, cena = ?  WHERE id = " + riadokKosik.getId();

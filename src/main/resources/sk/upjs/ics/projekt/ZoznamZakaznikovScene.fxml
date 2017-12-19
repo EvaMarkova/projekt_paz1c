@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +21,9 @@
             <TableColumn fx:id="adresaCol" maxWidth="1000.0" minWidth="50.0" prefWidth="50.0" text="Adresa" />
             <TableColumn fx:id="cisloCol" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" text="Telefónne číslo" />
             <TableColumn fx:id="emailCol" maxWidth="1000.0" minWidth="45.0" prefWidth="45.0" text="E-mail" />
-            <TableColumn fx:id="sluzbyCol" maxWidth="10000.0" minWidth="100.0" prefWidth="100.0" text="Vybrané Služby" />
+            <TableColumn fx:id="sluzbyCol" maxWidth="10000.0" minWidth="100.0" prefWidth="100.0" text="Vybraté služby" />
+            <TableColumn fx:id="poctyCol" prefWidth="75.0" text="Počty služieb" />
+            <TableColumn fx:id="vyslednaCenaCol" prefWidth="75.0" text="Výsledná cena" />
         </columns>
       </TableView>
       <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="334.0" text="             Zoznam zákazníkov">
@@ -38,4 +41,7 @@
          </graphic>
       </Button>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

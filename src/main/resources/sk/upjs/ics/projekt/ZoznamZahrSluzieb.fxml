@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -51,4 +52,7 @@
       <Label fx:id="nazovSluzbyLabel" layoutX="111.0" layoutY="96.0" prefHeight="17.0" prefWidth="238.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="38.0" />
       <Label layoutX="24.0" layoutY="152.0" text=" Popis služby: " AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="288.3333333333333" />
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

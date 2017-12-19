@@ -1,5 +1,8 @@
 package sk.upjs.ics.projekt;
 
+import sk.upjs.ics.projekt.PridatReklSluzbuController;
+import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
+import sk.upjs.ics.projekt.UpravitReklSluzbuController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -13,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
+import sk.upjs.ics.projekt.ReklamnaSluzba;
+import sk.upjs.ics.projekt.ReklamneSluzbyFxModel;
 
 public class ZoznamReklSluziebAdminController {
 

@@ -1,5 +1,6 @@
 package sk.upjs.ics.projekt;
 
+import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -10,9 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 
 public class VymazatZakaznikaControllerAdmin {
 
@@ -46,6 +47,12 @@ public class VymazatZakaznikaControllerAdmin {
 
     @FXML
     private TableColumn<Zakaznik, String> sluzbyCol;
+    
+    @FXML
+    private TableColumn<Zakaznik, String> poctyCol;
+    
+    @FXML
+    private TableColumn<Zakaznik, Double> vyslednaCenaCol;
 
     @FXML
     private Button homeButton;
@@ -64,6 +71,8 @@ public class VymazatZakaznikaControllerAdmin {
         cisloCol.setCellValueFactory(new PropertyValueFactory<>("cislo"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         sluzbyCol.setCellValueFactory(new PropertyValueFactory<>("vybraneSluzby"));
+        poctyCol.setCellValueFactory(new PropertyValueFactory<>("poctySluzieb"));
+        vyslednaCenaCol.setCellValueFactory(new PropertyValueFactory<>("vyslednaCena"));
         zoznamTableView.setItems(zakaznikModel.getZakaznici());
 
         homeButton.setOnAction(eh -> {
@@ -77,7 +86,7 @@ public class VymazatZakaznikaControllerAdmin {
                 Scene scene = new Scene(parentPane);
                 Stage stage = new Stage();
                 stage.setScene(scene);
-                stage.setTitle("AGRO Metlife - Reklamné a záhradné služby");
+                stage.setTitle("AGRO Metlife - Zákazníci");
                 homeButton.getScene().getWindow().hide();
                 stage.show();
             } catch (IOException iOException) {

@@ -20,19 +20,20 @@ public class MainSceneController {
     @FXML
     void initialize() {
          adminButton.setOnAction(eh -> {
-            DruhSluzbyAdminSceneController controller = 
-                    new DruhSluzbyAdminSceneController();
-            adminButton.getScene().getWindow().hide();
-               try {
+             
+                AdminSceneController controller = new AdminSceneController();
+                adminButton.getScene().getWindow().hide();
+                
+                               try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("DruhSluzbyAdminScene.fxml"));
+                    getClass().getResource("AdminScene.fxml"));
             loader.setController(controller);
 
             Parent parentPane = loader.load();
             Scene scene = new Scene(parentPane);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("AGRO Metlife - Druhy služieb");
+            stage.setTitle("AGRO Metlife - Prihlásiť sa ako admin");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
             
@@ -41,6 +42,27 @@ public class MainSceneController {
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
+//            DruhSluzbyAdminSceneController controller = 
+//                    new DruhSluzbyAdminSceneController();
+//            adminButton.getScene().getWindow().hide();
+//               try {
+//            FXMLLoader loader = new FXMLLoader(
+//                    getClass().getResource("DruhSluzbyAdminScene.fxml"));
+//            loader.setController(controller);
+//
+//            Parent parentPane = loader.load();
+//            Scene scene = new Scene(parentPane);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setTitle("AGRO Metlife - Druhy služieb");
+//            stage.initModality(Modality.APPLICATION_MODAL);
+//            stage.showAndWait();
+//            
+//
+//            // toto sa vykona az po zatvoreni okna
+//        } catch (IOException iOException) {
+//            iOException.printStackTrace();
+//        }
         });
         
          zakaznikButton.setOnAction(eh -> {

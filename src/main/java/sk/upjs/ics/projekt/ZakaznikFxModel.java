@@ -11,6 +11,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sk.upjs.ics.projekt.DaoFactory;
+import sk.upjs.ics.projekt.Zakaznik;
 
 public class ZakaznikFxModel {
 
@@ -23,6 +25,8 @@ public class ZakaznikFxModel {
     private StringProperty cislo = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private StringProperty vybraneSluzby = new SimpleStringProperty();
+    private StringProperty poctySluzieb = new SimpleStringProperty();
+    private DoubleProperty vyslednaCena = new SimpleDoubleProperty();
 
     public ZakaznikFxModel() {
         ZakaznikDao zakaznikDao = DaoFactory.INSTANCE.getZakaznikDao();
@@ -101,6 +105,30 @@ public class ZakaznikFxModel {
     public void setVybraneSluzby(String vybraneSluzby) {
         this.vybraneSluzby.set(vybraneSluzby);
     }
+    
+    public StringProperty poctySluziebProperty() {
+        return poctySluzieb;
+    }
+
+    public String getPoctySluzieb() {
+        return poctySluzieb.get();
+    }
+
+    public void setPoctySluzieb(String poctySluzieb) {
+        this.poctySluzieb.set(poctySluzieb);
+    }
+    
+    public DoubleProperty vyslednaCenaProperty() {
+        return vyslednaCena;
+    }
+
+    public Double getVyslednaCena() {
+        return vyslednaCena.get();
+    }
+
+    public void setVyslednaCena(Double vyslednaCena) {
+        this.vyslednaCena.set(vyslednaCena);
+    }
 
     public Zakaznik getZakaznik() {
         Zakaznik zakaznik = new Zakaznik();
@@ -111,6 +139,8 @@ public class ZakaznikFxModel {
         zakaznik.setCislo(getCislo());
         zakaznik.setEmail(getEmail());
         zakaznik.setVybraneSluzby(getVybraneSluzby());
+        zakaznik.setPoctySluzieb(getPoctySluzieb());
+        zakaznik.setVyslednaCena(getVyslednaCena());
         return zakaznik;
     }
 
@@ -122,6 +152,8 @@ public class ZakaznikFxModel {
         setCislo(zakaznik.getCislo());
         setEmail(zakaznik.getEmail());
         setVybraneSluzby(zakaznik.getVybraneSluzby());
+        setPoctySluzieb(zakaznik.getPoctySluzieb());
+        setVyslednaCena(zakaznik.getVyslednaCena());
     }
 
     public void newRiadokKosik() {
@@ -132,6 +164,8 @@ public class ZakaznikFxModel {
         setCislo(null);
         setEmail(null);
         setVybraneSluzby(null);
+        setPoctySluzieb(null);        
+        setVyslednaCena(null);
     }
 
     public ObservableList<Zakaznik> getZakaznici() {

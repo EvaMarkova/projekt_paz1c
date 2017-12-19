@@ -1,5 +1,6 @@
-package sk.upjs.ics.projekt;
+package sk.upjs.ics.projekt.fxmodel;
 
+import sk.upjs.ics.projekt.ZahradnaSluzbaDao;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -7,6 +8,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sk.upjs.ics.projekt.DaoFactory;
+import sk.upjs.ics.projekt.ZahradnaSluzba;
 
 public class ZahradneSluzbyFxModel {
 

@@ -1,7 +1,7 @@
 package sk.upjs.ics.projekt;
 
+
 import com.mysql.cj.jdbc.MysqlDataSource;
-import sk.upjs.ics.projekt.MainSceneController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,9 +23,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.projekt.ZahradnaSluzba;
-import sk.upjs.ics.projekt.ZahradneSluzbyFxModel;
+import sk.upjs.ics.projekt.fxmodel.ZahradneSluzbyFxModel;
 
 
 public class ZoznamZahrSluziebController {

@@ -1,5 +1,7 @@
 package sk.upjs.ics.projekt;
 
+import sk.upjs.ics.projekt.KosikController;
+import sk.upjs.ics.projekt.DruhSluzbySceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -21,6 +23,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
+import sk.upjs.ics.projekt.ReklamnaSluzba;
+import sk.upjs.ics.projekt.ReklamneSluzbyFxModel;
 
 public class ZoznamReklSluziebController {
 

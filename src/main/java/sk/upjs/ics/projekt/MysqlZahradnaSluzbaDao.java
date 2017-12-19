@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import sk.upjs.ics.projekt.DaoException;
+import sk.upjs.ics.projekt.ZahradnaSluzba;
 
 public class MysqlZahradnaSluzbaDao implements ZahradnaSluzbaDao {
 
@@ -54,7 +56,8 @@ public class MysqlZahradnaSluzbaDao implements ZahradnaSluzbaDao {
             simpleJdbcInsert.withTableName("zahradne_sluzby");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
             simpleJdbcInsert.usingColumns("nazov", "rocne_obdobie", "popis", "cena");
-
+            String sql = "INSERT zahradne_sluzby(nazov,rocne_obdobie,popis,cena) VALUES (?,?,?,?)";
+            jdbcTemplate.update(sql,zahradnaSluzba.getNazov(),zahradnaSluzba.getRocneObdobie(),zahradnaSluzba.getPopis(),zahradnaSluzba.getCena());
         } else {
             // UPDATE
             String sql = "UPDATE zahradne_sluzby SET nazov = ?,rocne_obdobie=?, popis = ?, cena = ?  WHERE id = " + zahradnaSluzba.getId();

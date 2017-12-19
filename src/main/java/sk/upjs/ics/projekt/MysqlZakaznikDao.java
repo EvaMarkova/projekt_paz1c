@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import sk.upjs.ics.projekt.DaoException;
+import sk.upjs.ics.projekt.Zakaznik;
 
-public class MysqlZakaznikDao implements ZakaznikDao {
-    
-    // private RiadokKosikFxModel modelRiadka = new RiadokKosikFxModel();
+public class MysqlZakaznikDao implements ZakaznikDao {   
                 
     private JdbcTemplate jdbcTemplate;
 
@@ -21,8 +21,8 @@ public class MysqlZakaznikDao implements ZakaznikDao {
 
     @Override
     public List<Zakaznik> getAll() {
-        // String veciZKosika = modelRiadka.getRiadkyKosika().toString();
-        String sql = "SELECT id, meno, priezvisko, adresa, cislo, email, vybrate_sluzby FROM zakaznici";
+        
+        String sql = "SELECT id, meno, priezvisko, adresa, cislo, email, vybrate_sluzby, pocty_sluzieb, vysledna_cena FROM zakaznici";
         List<Zakaznik> zakaznici = jdbcTemplate.query(sql, new RowMapper<Zakaznik>() {
             @Override
             public Zakaznik mapRow(ResultSet rs, int i) throws SQLException {
@@ -34,6 +34,8 @@ public class MysqlZakaznikDao implements ZakaznikDao {
                 zakaznik.setCislo(rs.getString("cislo"));
                 zakaznik.setEmail(rs.getString("email"));
                 zakaznik.setVybraneSluzby(rs.getString("vybrate_sluzby"));
+                zakaznik.setPoctySluzieb(rs.getString("pocty_sluzieb"));
+                zakaznik.setVyslednaCena(rs.getDouble("vysledna_cena"));
                 return zakaznik;
             }
         });
@@ -42,7 +44,7 @@ public class MysqlZakaznikDao implements ZakaznikDao {
 
     @Override
     public boolean deleteById(Long id) {
-        String sql = "DELETE FROM zahradne_sluzby WHERE id = " + id;
+        String sql = "DELETE FROM zakaznici WHERE id = " + id;
         try {
             int zmazanych = jdbcTemplate.update(sql);
             return zmazanych == 1;
@@ -60,12 +62,14 @@ public class MysqlZakaznikDao implements ZakaznikDao {
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
             simpleJdbcInsert.withTableName("zakaznici");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
-            simpleJdbcInsert.usingColumns("meno","priezvisko","adresa","cislo","email","vybrate_sluzby");           
-                       
+            simpleJdbcInsert.usingColumns("meno","priezvisko","adresa","cislo","email","vybrate_sluzby","pocty_sluzieb","vysledna_cena");           
+            String sql = "INSERT zakaznici(meno,priezvisko,adresa,cislo,email,vybrate_sluzby,pocty_sluzieb,vysledna_cena) VALUES (?,?,?,?,?,?,?,?)";
+            jdbcTemplate.update(sql,zakaznik.getMeno(),zakaznik.getPriezvisko(),zakaznik.getCislo(),zakaznik.getEmail(),
+                    zakaznik.getVybraneSluzby(),zakaznik.getPoctySluzieb(),zakaznik.getVyslednaCena());           
         } else {
             // UPDATE
-            String sql = "UPDATE zakaznici SET meno = ?, priezvisko = ?, adresa = ?, cislo = ?, email=?,vybrate_sluzby = ? WHERE id = " + zakaznik.getId();
-            //jdbcTemplate.update(sql,);
+            String sql = "UPDATE zakaznici SET meno = ?, priezvisko = ?, adresa = ?, cislo = ?, email=?,vybrate_sluzby = ?,pocty_sluzieb = ?,vysledna_cena = ? WHERE id = " + zakaznik.getId();
+            jdbcTemplate.update(sql, zakaznik.getMeno(), zakaznik.getPriezvisko(), zakaznik.getAdresa(), zakaznik.getCislo(),zakaznik.getEmail(),zakaznik.getVybraneSluzby(),zakaznik.getPoctySluzieb(),zakaznik.getVyslednaCena());
         }
 
     }

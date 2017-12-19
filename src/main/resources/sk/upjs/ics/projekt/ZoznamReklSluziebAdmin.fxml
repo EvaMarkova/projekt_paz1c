@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,4 +35,7 @@
       </Button>
       <Button fx:id="upravitSluzbuButton" layoutX="143.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" text="Upraviť službu" AnchorPane.bottomAnchor="30.0" />
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

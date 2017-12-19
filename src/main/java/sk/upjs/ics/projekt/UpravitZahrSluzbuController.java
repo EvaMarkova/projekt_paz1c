@@ -1,5 +1,6 @@
 package sk.upjs.ics.projekt;
 
+import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
