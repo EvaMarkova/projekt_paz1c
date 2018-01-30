@@ -103,8 +103,7 @@ public class KosikController {
             }
             RiadokKosik riadokKosik = kosikTableView.getSelectionModel().getSelectedItem();
             String sql = "SET SQL_SAFE_UPDATES = 0";
-            jdbcTemplate.update(sql);
-            //sql = "DELETE FROM kosik WHERE nazov = '" + riadokKosik.getNazov() + "'";
+            jdbcTemplate.update(sql);         
             sql = "DELETE FROM kosik WHERE id = " + riadokKosik.getId();
             jdbcTemplate.update(sql);
             int selectedIndex = kosikTableView.getSelectionModel().getSelectedIndex();

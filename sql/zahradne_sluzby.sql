@@ -1,10 +1,11 @@
 SELECT * FROM projekt.zahradne_sluzby;
 select * from reklamne_sluzby;
 delete from reklamne_sluzby;
+delete from zahradne_sluzby;
 SET SQL_SAFE_UPDATES = 0;
 use projekt;
 delete from zahradne_sluzby;
-insert into zahradne_sluzby value(1,"Jar", "Orezávanie stromov, kríkov a kerov", "Vaše stromy môžu vyzerať krásne po celý rok. My sa o tom postaráme.", "6.80");
+insert into zahradne_sluzby value(1,"Jar", "Orezávanie stromov, kríkov a kerov", "Vaše stromy môžu vyzerať krásne po celý rok. My sa o to postaráme.", "6.80");
 insert into zahradne_sluzby value(2,"Jar", "Príprava pôdy", "Vašu pôdu pripravíme tak, aby sa Vám na nej urodilo, čo najviac úrody.", "4.30");
 insert into zahradne_sluzby value(3,"Jar", "Sadenie a sejba", "Môžete sedieť v pohodlí domova, kým my za Vás zasadíme a zasejeme.", "2.50");
 insert into zahradne_sluzby value(4, "Jar","Valcovanie pôdy", "Nemáte valec, ktorý by Vám vyvalcoval pôdu? Donesieme ten náš a vyvalcujeme ju za vás.", "1.50");
@@ -30,7 +31,7 @@ insert into zahradne_sluzby value(23,"Zima", "Odstraňovanie cencúľov zo strie
 insert into zahradne_sluzby value(24, "Zima","Odstraňovanie ľadu","Túto namáhavú prácu spravíme za Vás. Vy môžte spokojne sedieť v teple Vášho domova.","9.20");
 
 ALTER TABLE zahradne_sluzby AUTO_INCREMENT = 25;
-
+alter table zakaznici auto_increment = 1;
 ALTER TABLE reklamne_sluzby AUTO_INCREMENT = 11;
 insert into reklamne_sluzby values
 (1,"Bezfarebná tlač / kopírovanie - A4", "Vytlačíme / Okopírujeme Vám ľubovoľný počet strán o rozmere A4 - čiernobielo.",0.10),
@@ -45,4 +46,4 @@ insert into reklamne_sluzby values
 (10,"Výroba vizitiek (500 kusov v balení) ", "Vizitky majú zvyčajne rozmer 5x9cm, ale my Vám vyrobíme vizitky také, aké chcete vy.",26);
 
 insert into reklamne_sluzby values (10,"Výroba vizitiek (500 kusov v balení) ", "Vizitky majú zvyčajne rozmer 5x9cm, ale my Vám vyrobíme vizitky také, aké chcete vy.",26);
-delete from reklamne_sluzby where id = 12;
+delete from reklamne_sluzby;

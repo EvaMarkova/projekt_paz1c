@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class PridatReklSluzbuController {
 
     private JdbcTemplate jdbcTemplate;
+    private ReklamnaSluzbaDao reklamnaSluzbaDao;
 
     @FXML
     private Button homeButton;
@@ -86,7 +87,6 @@ public class PridatReklSluzbuController {
 
             ZoznamReklSluziebAdminController controller
                     = new ZoznamReklSluziebAdminController();
-            //pridatSluzbuButton.getScene().getWindow().hide();
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("ZoznamReklSluziebAdmin.fxml"));
@@ -99,8 +99,6 @@ public class PridatReklSluzbuController {
                 stage.setTitle("AGRO Metlife - Reklamné služby");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

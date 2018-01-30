@@ -41,12 +41,12 @@ public class ReklamnaSluzbaDaoTest {
         reklamnaSluzba.setNazov("Tlač");
         reklamnaSluzba.setPopis("Tlačíme");
         reklamnaSluzba.setCena(0.5);
-        dao.save(reklamnaSluzba);
-        
+        dao.save(reklamnaSluzba);        
         assertEquals(velkost + 1 , dao.getAll().size());
+        dao.deleteById(reklamnaSluzba.getId());
     }
 
-    @Test
+   @Test
     public void testGetAll() {
         ReklamnaSluzbaDao reklamnaSluzbaDao = DaoFactory.INSTANCE.getReklamnaSluzbaDao();
         List<ReklamnaSluzba> all = reklamnaSluzbaDao.getAll();

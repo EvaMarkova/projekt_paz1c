@@ -10,87 +10,61 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainSceneController {
-    
+
     @FXML
     private Button adminButton;
 
     @FXML
     private Button zakaznikButton;
-    
+
     @FXML
     void initialize() {
-         adminButton.setOnAction(eh -> {
-             
-                AdminSceneController controller = new AdminSceneController();
-                adminButton.getScene().getWindow().hide();
-                
-                               try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("AdminScene.fxml"));
-            loader.setController(controller);
+        adminButton.setOnAction(eh -> {
 
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("AGRO Metlife - Prihlásiť sa ako admin");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-            
+            AdminSceneController controller = new AdminSceneController();
+            adminButton.getScene().getWindow().hide();
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
-//            DruhSluzbyAdminSceneController controller = 
-//                    new DruhSluzbyAdminSceneController();
-//            adminButton.getScene().getWindow().hide();
-//               try {
-//            FXMLLoader loader = new FXMLLoader(
-//                    getClass().getResource("DruhSluzbyAdminScene.fxml"));
-//            loader.setController(controller);
-//
-//            Parent parentPane = loader.load();
-//            Scene scene = new Scene(parentPane);
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.setTitle("AGRO Metlife - Druhy služieb");
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.showAndWait();
-//            
-//
-//            // toto sa vykona az po zatvoreni okna
-//        } catch (IOException iOException) {
-//            iOException.printStackTrace();
-//        }
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("AdminScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("AGRO Metlife - Prihlásiť sa ako admin");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+
         });
-        
-         zakaznikButton.setOnAction(eh -> {
-             
-             DruhSluzbySceneController controller = 
-                     new DruhSluzbySceneController();  
-             zakaznikButton.getScene().getWindow().hide();
-               try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("DruhSluzbyScene.fxml"));
-            loader.setController(controller);
 
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("AGRO Metlife - Druhy služieb");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-            
+        zakaznikButton.setOnAction(eh -> {
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
-            
-         });    
-         
+            DruhSluzbySceneController controller
+                    = new DruhSluzbySceneController();
+            zakaznikButton.getScene().getWindow().hide();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("DruhSluzbyScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("AGRO Metlife - Druhy služieb");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+
+        });
+
     }
-            
+
 }

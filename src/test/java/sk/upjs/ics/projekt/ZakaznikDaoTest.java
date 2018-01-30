@@ -32,7 +32,7 @@ public class ZakaznikDaoTest {
     public void tearDown() {
     }
 
-    //@Test
+   
     public void saveTest() throws DaoException {
         Zakaznik zakaznik = new Zakaznik();
         int velkost = dao.getAll().size();
@@ -46,16 +46,17 @@ public class ZakaznikDaoTest {
         zakaznik.setVyslednaCena(4.9);
         dao.save(zakaznik);
         assertEquals(velkost + 1, dao.getAll().size());
+        dao.deleteById(zakaznik.getId());
     }
 
-    //@Test
+    
     public void testGetAll() {
         ZakaznikDao zakaznikDao = DaoFactory.INSTANCE.getZakaznikDao();
         List<Zakaznik> all = zakaznikDao.getAll();
         assertTrue(all.size() >= 0);
     }
 
-    @Test
+    
     public void deleteByIdTest() {
         if (dao.getAll().size() > 0) {
             Zakaznik zakaznik = dao.getAll().get(0);

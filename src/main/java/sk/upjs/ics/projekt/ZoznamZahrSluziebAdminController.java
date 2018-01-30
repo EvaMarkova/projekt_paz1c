@@ -85,8 +85,6 @@ public class ZoznamZahrSluziebAdminController {
                 stage.setTitle("AGRO Metlife - Pridať záhradnú službu");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -94,7 +92,6 @@ public class ZoznamZahrSluziebAdminController {
 
         upravitSluzbuButton.setOnAction(eh -> {
             id = zoznamTableView.getSelectionModel().getSelectedItem().getId();
-            System.out.println(id);
 
             UpravitZahrSluzbuController controller
                     = new UpravitZahrSluzbuController(id);
@@ -112,7 +109,7 @@ public class ZoznamZahrSluziebAdminController {
                 stage.setTitle("AGRO Metlife - Upraviť záhradnú službu");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                // toto sa vykona az po zatvoreni okna
+                
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

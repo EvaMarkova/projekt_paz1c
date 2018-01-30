@@ -17,7 +17,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class VymazatZakaznikaControllerAdmin {
 
-    // ZoznamZakaznikovScene.fxml
     private JdbcTemplate jdbcTemplate;
     private ZakaznikFxModel zakaznikModel = new ZakaznikFxModel();
 

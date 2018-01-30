@@ -34,7 +34,7 @@ public class ZahradnaSluzbaDaoTest {
     }
 
    
-    @Test
+   
     public void saveTest() throws DaoException {
         ZahradnaSluzba zahradnaSluzba = new ZahradnaSluzba();
         int velkost = dao.getAll().size();
@@ -44,20 +44,22 @@ public class ZahradnaSluzbaDaoTest {
         zahradnaSluzba.setCena(5.3);
         dao.save(zahradnaSluzba);        
         assertEquals(velkost + 1 , dao.getAll().size());
+        dao.deleteById(zahradnaSluzba.getId());
     }
 
-    @Test
+    
     public void testGetAll() {
         ZahradnaSluzbaDao zahradnaSluzbaDao = DaoFactory.INSTANCE.getZahradnaSluzbaDao();
         List<ZahradnaSluzba> all = zahradnaSluzbaDao.getAll();
         assertTrue(all.size() > 0);
     }
-
-    @Test
+    
+    
     public void deleteByIdTest() {
         ZahradnaSluzba r = dao.getAll().get(0);
         boolean pravda = dao.deleteById(r.getId());       
         assertTrue(pravda);
+       
     }
 
 }

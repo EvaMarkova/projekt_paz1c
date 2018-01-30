@@ -100,7 +100,6 @@ class UpravitReklSluzbuController {
 
             ZoznamReklSluziebAdminController controller
                     = new ZoznamReklSluziebAdminController();
-            //pridatSluzbuButton.getScene().getWindow().hide();
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("ZoznamReklSluziebAdmin.fxml"));
@@ -113,8 +112,6 @@ class UpravitReklSluzbuController {
                 stage.setTitle("AGRO Metlife - Reklamné služby");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

@@ -29,9 +29,9 @@
       <Label layoutX="26.0" layoutY="105.0" text="Popis služby: " AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="289.6666666666667" />
       <TextField fx:id="nazovSluzbyTextField" layoutX="119.0" layoutY="55.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
       <TextField fx:id="popisSluzbyTextField" alignment="TOP_LEFT" layoutX="119.0" layoutY="105.0" prefHeight="167.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
-      <Button fx:id="pridatSluzbuButton" layoutX="256.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" text="Pridať službu" AnchorPane.bottomAnchor="30.666666666666664" AnchorPane.rightAnchor="31.66666666666667" />
       <Label layoutX="27.0" layoutY="299.0" text="Cena služby: " AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="289.6666666666667" />
       <TextField fx:id="cenaTextField" layoutX="119.0" layoutY="295.0" prefHeight="25.0" prefWidth="237.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="30.666666666666657" />
+      <Button fx:id="pridatSluzbuButton" layoutX="256.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" text="Pridať službu" AnchorPane.bottomAnchor="30.666666666666664" AnchorPane.rightAnchor="31.66666666666667" />
    </children>
    <effect>
       <InnerShadow />

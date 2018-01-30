@@ -8,10 +8,6 @@ public enum DaoFactory {
 
     INSTANCE;
 
-    private ReklamnaSluzbaDao reklamnaSluzbaDao;
-    private ZahradnaSluzbaDao zahradnaSluzbaDao;
-    private RiadokKosikDao riadokKosikDao;
-    private ZakaznikDao zakaznikDao;
     private JdbcTemplate jdbcTemplate;
 
     public ReklamnaSluzbaDao getReklamnaSluzbaDao() {

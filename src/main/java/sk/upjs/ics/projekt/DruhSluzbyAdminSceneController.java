@@ -39,7 +39,6 @@ public class DruhSluzbyAdminSceneController {
             stage.setTitle("AGRO Metlife - Záhradné služby");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
-                // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
@@ -60,7 +59,6 @@ public class DruhSluzbyAdminSceneController {
             stage.setTitle("AGRO Metlife - reklamné služby");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
-                // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
@@ -81,7 +79,6 @@ public class DruhSluzbyAdminSceneController {
             stage.setTitle("AGRO Metlife - reklamné služby");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
-                // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }

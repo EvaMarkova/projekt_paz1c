@@ -86,8 +86,6 @@ public class ZoznamReklSluziebAdminController {
                 stage.setTitle("AGRO Metlife - Pridať reklamnú službu");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -97,8 +95,7 @@ public class ZoznamReklSluziebAdminController {
 
         upravitSluzbuButton.setOnAction(eh -> {
             id = zoznamTableView.getSelectionModel().getSelectedItem().getId();
-            System.out.println(id);
-            
+   
             UpravitReklSluzbuController controller
                     = new UpravitReklSluzbuController(id);
             upravitSluzbuButton.getScene().getWindow().hide();
@@ -115,7 +112,7 @@ public class ZoznamReklSluziebAdminController {
                 stage.setTitle("AGRO Metlife - Upraviť reklamnú službu");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                // toto sa vykona az po zatvoreni okna
+                
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

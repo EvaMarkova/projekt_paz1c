@@ -12,6 +12,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Button fx:id="homeButton" layoutX="-2.0" layoutY="-4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@house-logo-hi.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <TableView fx:id="zoznamTableView" layoutX="18.0" layoutY="54.0" prefHeight="267.0" prefWidth="352.0" AnchorPane.bottomAnchor="92.66666666666669" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="54.0">
         <columns>
           <TableColumn fx:id="nazovCol" prefWidth="349.6666660308838" text="Názov služby" />
@@ -23,17 +32,8 @@
          </font>
       </Label>
       <Button fx:id="pridatSluzbuButton" layoutX="18.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="123.0" text="Pridať novú službu" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="18.0" />
-      <Button fx:id="vymazatSluzbuButton" layoutX="259.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="105.0" text="Vymazať službu" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="25.0" />
-      <Button fx:id="homeButton" layoutX="-2.0" layoutY="-4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0">
-         <graphic>
-            <ImageView fitHeight="29.0" fitWidth="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@house-logo-hi.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="upravitSluzbuButton" layoutX="143.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" text="Upraviť službu" AnchorPane.bottomAnchor="30.0" />
+      <Button fx:id="vymazatSluzbuButton" layoutX="259.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="105.0" text="Vymazať službu" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="25.0" />
    </children>
    <effect>
       <InnerShadow />

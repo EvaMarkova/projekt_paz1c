@@ -34,26 +34,26 @@ public class RiadokKosikDaoTest {
     }
 
    
-    @Test
+    
     public void saveTest() throws DaoException {
         RiadokKosik riadokKosik = new RiadokKosik();
         int velkost = dao.getAll().size();
         riadokKosik.setNazov("Sluzba");
         riadokKosik.setPocet(4);
         riadokKosik.setCena(3.4);
-        dao.save(riadokKosik);
-        
+        dao.save(riadokKosik);        
         assertEquals(velkost + 1 , dao.getAll().size());
+        dao.deleteById(riadokKosik.getId());
     }
 
-    @Test
+    
     public void testGetAll() {
         RiadokKosikDao riadokKosikDao = DaoFactory.INSTANCE.getRiadokKosikDao();
         List<RiadokKosik> all = riadokKosikDao.getAll();
         assertTrue(all.size() >= 0);
     }
 
-    @Test
+   
     public void deleteByIdTest() {
         RiadokKosik r = dao.getAll().get(0);
         boolean pravda = dao.deleteById(r.getId());       

@@ -37,9 +37,7 @@ public class ReklamneSluzbyFxModel {
 
     public void setCenaReklamnejSluzby(double cenaReklamnejSluzby) {
         this.cenaReklamnejSluzby = cenaReklamnejSluzby;
-    }
-    
-    
+    }    
 
     public String getNazovReklamnejSluzby() {
         return nazovReklamnejSluzby.get();
