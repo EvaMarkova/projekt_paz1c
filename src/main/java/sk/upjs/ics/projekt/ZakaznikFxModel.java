@@ -1,18 +1,12 @@
 package sk.upjs.ics.projekt;
 
 import java.util.List;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import sk.upjs.ics.projekt.DaoFactory;
-import sk.upjs.ics.projekt.Zakaznik;
 
 public class ZakaznikFxModel {
 
@@ -24,9 +18,8 @@ public class ZakaznikFxModel {
     private StringProperty adresa = new SimpleStringProperty();
     private StringProperty cislo = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
-    private StringProperty vybraneSluzby = new SimpleStringProperty();
-    private StringProperty poctySluzieb = new SimpleStringProperty();
-    private DoubleProperty vyslednaCena = new SimpleDoubleProperty();
+    private StringProperty vydanyKosik = new SimpleStringProperty();
+    private StringProperty zaplatenyKosik = new SimpleStringProperty();
 
     public ZakaznikFxModel() {
         ZakaznikDao zakaznikDao = DaoFactory.INSTANCE.getZakaznikDao();
@@ -94,40 +87,28 @@ public class ZakaznikFxModel {
         this.email.set(email);
     }
 
-    public StringProperty vybraneSluzbyProperty() {
-        return vybraneSluzby;
+    public StringProperty vydanyKosikProperty() {
+        return vydanyKosik;
     }
 
-    public String getVybraneSluzby() {
-        return vybraneSluzby.get();
+    public String getVydanyKosik() {
+        return vydanyKosik.get();
     }
 
-    public void setVybraneSluzby(String vybraneSluzby) {
-        this.vybraneSluzby.set(vybraneSluzby);
-    }
-    
-    public StringProperty poctySluziebProperty() {
-        return poctySluzieb;
+    public void setVydanyKosik(String vydanyKosik) {
+        this.vydanyKosik.set(vydanyKosik);
     }
 
-    public String getPoctySluzieb() {
-        return poctySluzieb.get();
+    public StringProperty zaplatenyKosikProperty() {
+        return zaplatenyKosik;
     }
 
-    public void setPoctySluzieb(String poctySluzieb) {
-        this.poctySluzieb.set(poctySluzieb);
-    }
-    
-    public DoubleProperty vyslednaCenaProperty() {
-        return vyslednaCena;
+    public String getZaplatenyKosik() {
+        return zaplatenyKosik.get();
     }
 
-    public Double getVyslednaCena() {
-        return vyslednaCena.get();
-    }
-
-    public void setVyslednaCena(Double vyslednaCena) {
-        this.vyslednaCena.set(vyslednaCena);
+    public void setZaplatenyKosik(String zaplatenyKosik) {
+        this.zaplatenyKosik.set(zaplatenyKosik);
     }
 
     public Zakaznik getZakaznik() {
@@ -138,9 +119,8 @@ public class ZakaznikFxModel {
         zakaznik.setAdresa(getAdresa());
         zakaznik.setCislo(getCislo());
         zakaznik.setEmail(getEmail());
-        zakaznik.setVybraneSluzby(getVybraneSluzby());
-        zakaznik.setPoctySluzieb(getPoctySluzieb());
-        zakaznik.setVyslednaCena(getVyslednaCena());
+        zakaznik.setVydanyKosik(getVydanyKosik());
+        zakaznik.setZaplatenyKosik(getZaplatenyKosik());
         return zakaznik;
     }
 
@@ -151,21 +131,21 @@ public class ZakaznikFxModel {
         setAdresa(zakaznik.getAdresa());
         setCislo(zakaznik.getCislo());
         setEmail(zakaznik.getEmail());
-        setVybraneSluzby(zakaznik.getVybraneSluzby());
-        setPoctySluzieb(zakaznik.getPoctySluzieb());
-        setVyslednaCena(zakaznik.getVyslednaCena());
+        setVydanyKosik(zakaznik.getVydanyKosik());
+        setZaplatenyKosik(zakaznik.getZaplatenyKosik());
+
     }
 
-    public void newRiadokKosik() {
+    public void newZakaznik() {
         id = null;
         setMeno(null);
         setPriezvisko(null);
         setAdresa(null);
         setCislo(null);
         setEmail(null);
-        setVybraneSluzby(null);
-        setPoctySluzieb(null);        
-        setVyslednaCena(null);
+        setVydanyKosik(null);
+        setZaplatenyKosik(null);
+
     }
 
     public ObservableList<Zakaznik> getZakaznici() {

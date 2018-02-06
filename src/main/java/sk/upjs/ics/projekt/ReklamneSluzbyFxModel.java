@@ -9,7 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ReklamneSluzbyFxModel {
-    
+
     private ObservableList<ReklamnaSluzba> reklamneSluzby;
     private ObjectProperty<ReklamnaSluzba> vybrataReklamnaSluzba = new SimpleObjectProperty<>(null);
     private Long id;
@@ -37,7 +37,7 @@ public class ReklamneSluzbyFxModel {
 
     public void setCenaReklamnejSluzby(double cenaReklamnejSluzby) {
         this.cenaReklamnejSluzby = cenaReklamnejSluzby;
-    }    
+    }
 
     public String getNazovReklamnejSluzby() {
         return nazovReklamnejSluzby.get();
@@ -103,5 +103,4 @@ public class ReklamneSluzbyFxModel {
         return vybrataReklamnaSluzba.get();
     }
 
-   
 }

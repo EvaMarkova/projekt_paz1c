@@ -1,6 +1,5 @@
 package sk.upjs.ics.projekt;
 
-import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -9,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,12 +28,12 @@ class UpravitZahrSluzbuController {
 
     @FXML
     private TextField nazovSluzbyTextField;
-    
+
     @FXML
     private TextField rocneObdobieTextField;
 
     @FXML
-    private TextField popisSluzbyTextField;
+    private TextArea popisSluzbyTextArea;
 
     @FXML
     private Button upravitSluzbuButton;
@@ -82,14 +82,15 @@ class UpravitZahrSluzbuController {
 
         nazovSluzbyTextField.setText(nazov);
         rocneObdobieTextField.setText(rocneObdobie);
-        popisSluzbyTextField.setText(popis);
+        popisSluzbyTextArea.wrapTextProperty().set(true);
+        popisSluzbyTextArea.setText(popis);
         cenaTextField.setText(cena);
 
         upravitSluzbuButton.setOnAction(eh -> {
 
             String novyNazov = nazovSluzbyTextField.getText();
             String noveRocneObdobie = rocneObdobieTextField.getText();
-            String novyPopis = popisSluzbyTextField.getText();
+            String novyPopis = popisSluzbyTextArea.getText();
             String novaCena = cenaTextField.getText();
             String novySql = "UPDATE zahradne_sluzby SET nazov = ?, rocne_obdobie = ?, popis = ?, cena = ?  WHERE id = " + id;
             jdbcTemplate.update(novySql, novyNazov, noveRocneObdobie, novyPopis, Double.parseDouble(novaCena));

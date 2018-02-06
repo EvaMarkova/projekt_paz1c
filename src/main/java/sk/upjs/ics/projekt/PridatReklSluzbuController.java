@@ -1,6 +1,5 @@
 package sk.upjs.ics.projekt;
 
-import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -17,7 +16,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class PridatReklSluzbuController {
 
     private JdbcTemplate jdbcTemplate;
-    private ReklamnaSluzbaDao reklamnaSluzbaDao;
 
     @FXML
     private Button homeButton;
@@ -74,7 +72,7 @@ public class PridatReklSluzbuController {
                 alert.setContentText("Príčinou je, že v poli pre cenu nie je reálne číslo s bodkou.");
                 alert.showAndWait();
             }
-            
+
             jdbcTemplate.update(sql, nazovSluzbyTextField.getText(),
                     popisSluzbyTextField.getText(),
                     Double.parseDouble(cenaTextField.getText()));

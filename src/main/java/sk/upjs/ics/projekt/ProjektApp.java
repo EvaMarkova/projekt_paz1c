@@ -23,7 +23,7 @@ public class ProjektApp extends Application {
         }
         String sql = "SET SQL_SAFE_UPDATES = 0";
         jdbcTemplate.update(sql);
-        sql = "DELETE FROM kosik";
+        sql = "DELETE FROM polozky_kosika";
         jdbcTemplate.update(sql);
 
         MainSceneController controller = new MainSceneController();

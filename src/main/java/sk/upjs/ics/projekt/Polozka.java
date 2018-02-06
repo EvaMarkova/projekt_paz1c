@@ -1,11 +1,12 @@
 package sk.upjs.ics.projekt;
 
-public class ReklamnaSluzba {
+public class Polozka {
 
     private Long id;
     private String nazov;
-    private String popis;
+    private int pocet;
     private double cena;
+    private Long zakazniciId;
 
     public Long getId() {
         return id;
@@ -23,12 +24,12 @@ public class ReklamnaSluzba {
         this.nazov = nazov;
     }
 
-    public String getPopis() {
-        return popis;
+    public int getPocet() {
+        return pocet;
     }
 
-    public void setPopis(String popis) {
-        this.popis = popis;
+    public void setPocet(int pocet) {
+        this.pocet = pocet;
     }
 
     public double getCena() {
@@ -42,6 +43,14 @@ public class ReklamnaSluzba {
     @Override
     public String toString() {
         return nazov;
+    }
+
+    public Long getZakazniciId() {
+        return zakazniciId;
+    }
+
+    public void setZakazniciId(Long zakazniciId) {
+        this.zakazniciId = zakazniciId;
     }
 
 }

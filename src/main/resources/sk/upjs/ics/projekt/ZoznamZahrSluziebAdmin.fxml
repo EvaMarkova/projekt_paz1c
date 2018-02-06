@@ -14,7 +14,10 @@
    <children>
       <TableView fx:id="zoznamTableView" layoutX="18.0" layoutY="54.0" prefHeight="267.0" prefWidth="352.0" AnchorPane.bottomAnchor="92.66666666666669" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="54.0">
         <columns>
-          <TableColumn fx:id="nazovCol" prefWidth="349.6666660308838" text="Názov služby" />
+            <TableColumn fx:id="obdCol" prefWidth="80.00000190734863" text="Ročné obdobie" />
+          <TableColumn fx:id="nazovCol" prefWidth="103.99999237060547" text="Názov služby" />
+            <TableColumn fx:id="popisCol" prefWidth="98.66671752929688" text="Popis služby" />
+            <TableColumn fx:id="cenaCol" prefWidth="66.33334350585938" text="Cena služby" />
         </columns>
       </TableView>
       <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="334.0" text="      Zoznam záhradných služieb" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0">

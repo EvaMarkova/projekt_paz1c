@@ -35,7 +35,6 @@ public class RiadokKosikFxModel {
         this.id = id;
     }
 
-    
     public StringProperty nazovProperty() {
         return nazov;
     }
@@ -71,7 +70,7 @@ public class RiadokKosikFxModel {
     public void setCena(Double cena) {
         this.cena.set(cena);
     }
-   
+
     public RiadokKosik getRiadokKosik() {
         RiadokKosik riadokKosik = new RiadokKosik();
         riadokKosik.setId(id);

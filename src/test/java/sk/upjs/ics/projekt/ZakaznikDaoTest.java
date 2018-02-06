@@ -41,9 +41,6 @@ public class ZakaznikDaoTest {
         zakaznik.setAdresa("London 23.");
         zakaznik.setCislo("7898");
         zakaznik.setEmail("johnyE@jmail.com");
-        zakaznik.setVybraneSluzby("[sluzba1, sluzba2]");
-        zakaznik.setPoctySluzieb("[3,2]");
-        zakaznik.setVyslednaCena(4.9);
         dao.save(zakaznik);
         assertEquals(velkost + 1, dao.getAll().size());
         dao.deleteById(zakaznik.getId());

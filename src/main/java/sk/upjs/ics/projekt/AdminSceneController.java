@@ -25,7 +25,7 @@ public class AdminSceneController {
     private Button prihlasitSaButton;
 
     private String hash(String heslo, String sol) {
-        return BCrypt.hashpw(heslo,sol);
+        return BCrypt.hashpw(heslo, sol);
     }
 
     @FXML
@@ -33,8 +33,8 @@ public class AdminSceneController {
 
         prihlasitSaButton.setOnAction(eh -> {
             String sol = BCrypt.gensalt();
-            if ((loginTextField.getText().equals(adminLogin)) &&
-                    hash(hesloPasswordField.getText(),sol).equals(hash(adminHeslo,sol))) {
+            if ((loginTextField.getText().equals(adminLogin))
+                    && hash(hesloPasswordField.getText(), sol).equals(hash(adminHeslo, sol))) {
                 DruhSluzbyAdminSceneController controller
                         = new DruhSluzbyAdminSceneController();
                 prihlasitSaButton.getScene().getWindow().hide();
@@ -63,8 +63,7 @@ public class AdminSceneController {
         });
 
     }
-    
-    
+
     private final String adminLogin = "admin";
     private final String adminHeslo = "macka";
 

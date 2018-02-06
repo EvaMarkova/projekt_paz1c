@@ -1,8 +1,5 @@
 package sk.upjs.ics.projekt;
 
-import sk.upjs.ics.projekt.PridatReklSluzbuController;
-import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
-import sk.upjs.ics.projekt.UpravitReklSluzbuController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -43,11 +40,20 @@ public class ZoznamReklSluziebAdminController {
 
     @FXML
     private TableColumn<ReklamnaSluzba, String> nazovCol;
+    
+    @FXML
+    private TableColumn<ReklamnaSluzba, String> popisCol;
+
+    @FXML
+    private TableColumn<ReklamnaSluzba, String> cenaCol;
+
 
     @FXML
     void initialize() {
 
         nazovCol.setCellValueFactory(new PropertyValueFactory<>("nazov"));
+        popisCol.setCellValueFactory(new PropertyValueFactory<>("popis"));
+        cenaCol.setCellValueFactory(new PropertyValueFactory<>("cena"));
         zoznamTableView.setItems(sluzbyModel.getReklamneSluzby());
 
         homeButton.setOnAction(eh -> {

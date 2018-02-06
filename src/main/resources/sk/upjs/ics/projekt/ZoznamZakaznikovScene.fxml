@@ -12,30 +12,39 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="vymazatZaknikaButton" layoutX="239.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" text="Vymazať zákazníka" AnchorPane.bottomAnchor="30.666666666666686" AnchorPane.rightAnchor="18.0" />
+      <Button fx:id="vymazatZakaznikaButton" layoutX="239.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" text="Vymazať zákazníka" AnchorPane.bottomAnchor="30.666666666666686" AnchorPane.rightAnchor="18.0" />
       <TableView fx:id="zoznamTableView" layoutX="18.0" layoutY="54.0" prefHeight="267.0" prefWidth="352.0" AnchorPane.bottomAnchor="92.66666666666669" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="54.0">
         <columns>
             <TableColumn fx:id="idCol" maxWidth="100.0" minWidth="30.0" prefWidth="30.0" text="Id" />
           <TableColumn fx:id="menoCol" maxWidth="1000.0" minWidth="40.0" text="Meno" />
             <TableColumn fx:id="priezviskoCol" maxWidth="1000.0" minWidth="70.0" prefWidth="100.0" text="Priezvisko" />
-            <TableColumn fx:id="adresaCol" maxWidth="1000.0" minWidth="50.0" prefWidth="50.0" text="Adresa" />
+            <TableColumn fx:id="adresaCol" maxWidth="1000.0" minWidth="50.0" prefWidth="112.0" text="Adresa" />
             <TableColumn fx:id="cisloCol" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" text="Telefónne číslo" />
-            <TableColumn fx:id="emailCol" maxWidth="1000.0" minWidth="45.0" prefWidth="45.0" text="E-mail" />
-            <TableColumn fx:id="sluzbyCol" maxWidth="10000.0" minWidth="100.0" prefWidth="100.0" text="Vybraté služby" />
-            <TableColumn fx:id="poctyCol" prefWidth="75.0" text="Počty služieb" />
-            <TableColumn fx:id="vyslednaCenaCol" prefWidth="75.0" text="Výsledná cena" />
+            <TableColumn fx:id="emailCol" maxWidth="1000.0" minWidth="45.0" prefWidth="112.0" text="E-mail" />
+            <TableColumn fx:id="vydanyCol" prefWidth="112.66665649414062" text="Vydaný košík" />
+            <TableColumn fx:id="zaplatenyCol" prefWidth="112.0" text="Zaplatený košík" />
         </columns>
       </TableView>
-      <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="334.0" text="             Zoznam zákazníkov">
+      <Label layoutX="29.0" layoutY="14.0" prefHeight="26.0" prefWidth="334.0" text="             Zoznam zákazníkov" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="homeButton" layoutX="-2.0" layoutY="-4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0">
+      <Button fx:id="homeButton" layoutX="-2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="0.0">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@house-logo-hi.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="pozrietZakaznikaButton" layoutX="29.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" text="Pozrieť zákazníka" AnchorPane.bottomAnchor="30.666666666666664" AnchorPane.leftAnchor="29.0" />
+      <Button fx:id="refreshButton" layoutX="349.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="39.0" AnchorPane.rightAnchor="-1.3333333333333357" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@refresh.png" />
                </image>
             </ImageView>
          </graphic>

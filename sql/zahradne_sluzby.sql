@@ -1,5 +1,10 @@
-SELECT * FROM projekt.zahradne_sluzby;
+SELECT * FROM zahradne_sluzby;
 select * from reklamne_sluzby;
+select * from zakaznici;
+select * from polozky_kosika;
+select * from kosik;
+
+
 delete from reklamne_sluzby;
 delete from zahradne_sluzby;
 SET SQL_SAFE_UPDATES = 0;
@@ -31,8 +36,18 @@ insert into zahradne_sluzby value(23,"Zima", "Odstraňovanie cencúľov zo strie
 insert into zahradne_sluzby value(24, "Zima","Odstraňovanie ľadu","Túto namáhavú prácu spravíme za Vás. Vy môžte spokojne sedieť v teple Vášho domova.","9.20");
 
 ALTER TABLE zahradne_sluzby AUTO_INCREMENT = 25;
+
+delete from zakaznici;
 alter table zakaznici auto_increment = 1;
+
+delete from kosik;
+alter table kosik auto_increment = 1;
+
+alter table polozky_kosika auto_increment = 1;
+
+delete from reklamne_sluzby;
 ALTER TABLE reklamne_sluzby AUTO_INCREMENT = 11;
+
 insert into reklamne_sluzby values
 (1,"Bezfarebná tlač / kopírovanie - A4", "Vytlačíme / Okopírujeme Vám ľubovoľný počet strán o rozmere A4 - čiernobielo.",0.10),
 (2,"Bezfarebná tlač / kopírovanie - A3", "Vytlačíme / Okopírujeme Vám ľubovoľný počet strán o rozmere A3 - čiernobielo.",0.18),

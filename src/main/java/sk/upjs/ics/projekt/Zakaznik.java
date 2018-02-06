@@ -1,9 +1,5 @@
 package sk.upjs.ics.projekt;
 
-import javafx.collections.ObservableList;
-
-
-
 public class Zakaznik {
 
     private Long id;
@@ -12,10 +8,8 @@ public class Zakaznik {
     private String adresa;
     private String cislo;
     private String email;
-    private String vybraneSluzby;
-    private String poctySluzieb;
-    private Double vyslednaCena;
-    
+    private String vydanyKosik;
+    private String zaplatenyKosik;
 
     public Long getId() {
         return id;
@@ -65,35 +59,21 @@ public class Zakaznik {
         this.email = email;
     }
 
-    public String getVybraneSluzby() {
-        return vybraneSluzby;
+    public String getVydanyKosik() {
+        return vydanyKosik;
     }
 
-    public void setVybraneSluzby(String vybraneSluzby) {
-        this.vybraneSluzby = vybraneSluzby;
+    public void setVydanyKosik(String vydanyKosik) {
+        this.vydanyKosik = vydanyKosik;
     }
 
-    public String getPoctySluzieb() {
-        return poctySluzieb;
+    public String getZaplatenyKosik() {
+        return zaplatenyKosik;
     }
 
-    public void setPoctySluzieb(String poctySluzieb) {
-        this.poctySluzieb = poctySluzieb;
+    public void setZaplatenyKosik(String zaplatenyKosik) {
+        this.zaplatenyKosik = zaplatenyKosik;
     }
-    
-
-    public Double getVyslednaCena() {
-        return vyslednaCena;
-    }
-
-    public void setVyslednaCena(Double vyslednaCena) {
-        this.vyslednaCena = vyslednaCena;
-    }
-    
-    
-    
-    
-
 
     @Override
     public String toString() {

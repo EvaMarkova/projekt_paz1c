@@ -1,6 +1,5 @@
-package sk.upjs.ics.projekt.fxmodel;
+package sk.upjs.ics.projekt;
 
-import sk.upjs.ics.projekt.ZahradnaSluzbaDao;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -8,8 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import sk.upjs.ics.projekt.DaoFactory;
-import sk.upjs.ics.projekt.ZahradnaSluzba;
 
 public class ZahradneSluzbyFxModel {
 
@@ -41,8 +38,6 @@ public class ZahradneSluzbyFxModel {
     public void setCenaZahradnejSluzby(Double cenaZahradnejSluzby) {
         this.cenaZahradnejSluzby = cenaZahradnejSluzby;
     }
-    
-    
 
     public String getNazovZahradnejSluzby() {
         return nazovZahradnejSluzby.get();
@@ -68,7 +63,6 @@ public class ZahradneSluzbyFxModel {
         return popisZahradnejSluzby;
     }
 
-   
     public ZahradnaSluzba getZahradnaSluzba() {
         ZahradnaSluzba zahradnaSluzba = new ZahradnaSluzba();
         zahradnaSluzba.setId(id);
@@ -96,7 +90,6 @@ public class ZahradneSluzbyFxModel {
     public ObservableList<ZahradnaSluzba> getZahradneSluzby() {
         return zahradneSluzby;
     }
-    // ____________________________________________________
 
     public void setVybrataZahradnaSluzba(ZahradnaSluzba zahradnaSluzba) {
         vybrataZahradnaSluzba.set(zahradnaSluzba);

@@ -1,6 +1,5 @@
 package sk.upjs.ics.projekt;
 
-import sk.upjs.ics.projekt.DruhSluzbyAdminSceneController;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -15,13 +14,18 @@ import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
-public class VymazatZakaznikaControllerAdmin {
+public class ZoznamZakaznikovControllerAdmin {
 
     private JdbcTemplate jdbcTemplate;
     private ZakaznikFxModel zakaznikModel = new ZakaznikFxModel();
+    private Long id;
+   
 
     @FXML
-    private Button vymazatZaknikaButton;
+    private Button vymazatZakaznikaButton;
+    
+    @FXML 
+    private Button pozrietZakaznikaButton;
 
     @FXML
     private TableView<Zakaznik> zoznamTableView;
@@ -45,21 +49,17 @@ public class VymazatZakaznikaControllerAdmin {
     private TableColumn<Zakaznik, String> emailCol;
 
     @FXML
-    private TableColumn<Zakaznik, String> sluzbyCol;
-    
-    @FXML
-    private TableColumn<Zakaznik, String> poctyCol;
-    
-    @FXML
-    private TableColumn<Zakaznik, Double> vyslednaCenaCol;
+    private TableColumn<Zakaznik, String> vydanyCol;
 
+    @FXML
+    private TableColumn<Zakaznik, String> zaplatenyCol;
+    
     @FXML
     private Button homeButton;
-
-    public VymazatZakaznikaControllerAdmin() {
-
-    }
-
+    
+    @FXML
+    private Button refreshButton;
+    
     @FXML
     void initialize() {
 
@@ -68,10 +68,9 @@ public class VymazatZakaznikaControllerAdmin {
         priezviskoCol.setCellValueFactory(new PropertyValueFactory<>("priezvisko"));
         adresaCol.setCellValueFactory(new PropertyValueFactory<>("adresa"));
         cisloCol.setCellValueFactory(new PropertyValueFactory<>("cislo"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        sluzbyCol.setCellValueFactory(new PropertyValueFactory<>("vybraneSluzby"));
-        poctyCol.setCellValueFactory(new PropertyValueFactory<>("poctySluzieb"));
-        vyslednaCenaCol.setCellValueFactory(new PropertyValueFactory<>("vyslednaCena"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));      
+        vydanyCol.setCellValueFactory(new PropertyValueFactory<>("vydanyKosik"));
+        zaplatenyCol.setCellValueFactory(new PropertyValueFactory<>("zaplatenyKosik"));
         zoznamTableView.setItems(zakaznikModel.getZakaznici());
 
         homeButton.setOnAction(eh -> {
@@ -93,7 +92,7 @@ public class VymazatZakaznikaControllerAdmin {
             }
         });
 
-        vymazatZaknikaButton.setOnAction(eh -> {
+        vymazatZakaznikaButton.setOnAction(eh -> {
             if (jdbcTemplate == null) {
                 MysqlDataSource dataSource = new MysqlDataSource();
                 dataSource.setUser("projekt_user");
@@ -109,6 +108,46 @@ public class VymazatZakaznikaControllerAdmin {
             jdbcTemplate.update(sql);
             int selectedIndex = zoznamTableView.getSelectionModel().getSelectedIndex();
             zoznamTableView.getItems().remove(selectedIndex);
+        });
+      
+        
+        pozrietZakaznikaButton.setOnAction(eh -> {
+            id = zoznamTableView.getSelectionModel().getSelectedItem().getId();
+            PozrietZakaznikaController controller = new PozrietZakaznikaController(id);
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("PozrietZakaznikaScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("AGRO Metlife - Nákupný košík zákazníka");
+                stage.show();
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+        
+        refreshButton.setOnAction(eh -> {
+            refreshButton.getScene().getWindow().hide();
+            ZoznamZakaznikovControllerAdmin controller = new ZoznamZakaznikovControllerAdmin();
+             try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("ZoznamZakaznikovScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("AGRO Metlife - Zákazníci");
+                // pozrietZakaznikaButton.getScene().getWindow().hide();
+                stage.show();
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
         });
 
     }

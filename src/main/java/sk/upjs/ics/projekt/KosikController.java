@@ -24,7 +24,6 @@ public class KosikController {
 
     private JdbcTemplate jdbcTemplate;
     private Double vyslednaCena;
-    private String poctySluzieb;
     private final RiadokKosikFxModel riadkyKosikModel = new RiadokKosikFxModel();
 
     @FXML
@@ -103,13 +102,13 @@ public class KosikController {
             }
             RiadokKosik riadokKosik = kosikTableView.getSelectionModel().getSelectedItem();
             String sql = "SET SQL_SAFE_UPDATES = 0";
-            jdbcTemplate.update(sql);         
-            sql = "DELETE FROM kosik WHERE id = " + riadokKosik.getId();
+            jdbcTemplate.update(sql);
+            sql = "DELETE FROM polozky_kosika WHERE id = " + riadokKosik.getId();
             jdbcTemplate.update(sql);
             int selectedIndex = kosikTableView.getSelectionModel().getSelectedIndex();
             kosikTableView.getItems().remove(selectedIndex);
             if (kosikTableView.getItems().size() > 0) {
-                sql = "SELECT SUM(cena) FROM kosik";
+                sql = "SELECT SUM(cena) FROM polozky_kosika";
                 vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
                 vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
             } else {
@@ -125,7 +124,7 @@ public class KosikController {
             jdbcTemplate = new JdbcTemplate(dataSource);
         }
         if (kosikTableView.getItems().size() > 0) {
-            String sql = "SELECT SUM(cena) FROM kosik";
+            String sql = "SELECT SUM(cena) FROM polozky_kosika";
             vyslednaCena = jdbcTemplate.queryForObject(sql, Double.class);
             vyslednaCenaTextField.setText("Výsledna cena je " + vyslednaCena + "€");
         } else {

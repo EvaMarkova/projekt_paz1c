@@ -23,7 +23,6 @@ public class ZahradnaSluzba {
     public void setRocneObdobie(String rocneObdobie) {
         this.rocneObdobie = rocneObdobie;
     }
-       
 
     public String getNazov() {
         return nazov;
@@ -48,10 +47,10 @@ public class ZahradnaSluzba {
     public void setCena(double cena) {
         this.cena = cena;
     }
-    
+
     @Override
     public String toString() {
         return rocneObdobie + " - " + nazov;
     }
-    
+
 }

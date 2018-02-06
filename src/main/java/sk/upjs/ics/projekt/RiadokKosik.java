@@ -1,7 +1,7 @@
 package sk.upjs.ics.projekt;
 
 public class RiadokKosik {
-    
+
     private Long id;
     private String nazov;
     private Integer pocet;
@@ -14,7 +14,7 @@ public class RiadokKosik {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getNazov() {
         return nazov;
     }
@@ -41,8 +41,7 @@ public class RiadokKosik {
 
     @Override
     public String toString() {
-        return nazov; 
+        return nazov;
     }
 
-    
 }

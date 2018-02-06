@@ -34,7 +34,7 @@ public class ReklamnaSluzbaDaoTest {
     }
 
    
-    @Test
+    
     public void saveTest() throws DaoException {
         ReklamnaSluzba reklamnaSluzba = new ReklamnaSluzba();
         int velkost = dao.getAll().size();
@@ -46,14 +46,14 @@ public class ReklamnaSluzbaDaoTest {
         dao.deleteById(reklamnaSluzba.getId());
     }
 
-   @Test
+   
     public void testGetAll() {
         ReklamnaSluzbaDao reklamnaSluzbaDao = DaoFactory.INSTANCE.getReklamnaSluzbaDao();
         List<ReklamnaSluzba> all = reklamnaSluzbaDao.getAll();
         assertTrue(all.size() > 0);
     }
 
-    @Test
+    
     public void deleteByIdTest() {
         ReklamnaSluzba r = dao.getAll().get(0);
         boolean pravda = dao.deleteById(r.getId());       

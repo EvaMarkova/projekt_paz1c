@@ -23,8 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
-import sk.upjs.ics.projekt.ReklamnaSluzba;
-import sk.upjs.ics.projekt.ReklamneSluzbyFxModel;
 
 public class ZoznamReklSluziebController {
 
@@ -154,7 +152,7 @@ public class ZoznamReklSluziebController {
                 dataSource.setDatabaseName("projekt");
                 jdbcTemplate = new JdbcTemplate(dataSource);
             }
-            String sql = "INSERT INTO kosik(nazov,pocet,cena) VALUES(?,?,?)";
+            String sql = "INSERT INTO polozky_kosika(nazov,pocet,cena) VALUES(?,?,?)";
             jdbcTemplate.update(sql, reklSluzbyModel.getVybrataReklamnaSluzba().getNazov(), pocetSpinner.getValue(),
                     pocetSpinner.getValue() * reklSluzbyModel.getVybrataReklamnaSluzba().getCena());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

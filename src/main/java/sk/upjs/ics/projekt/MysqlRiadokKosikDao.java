@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import sk.upjs.ics.projekt.DaoException;
-import sk.upjs.ics.projekt.RiadokKosik;
 
 public class MysqlRiadokKosikDao implements RiadokKosikDao {
 
@@ -19,7 +17,7 @@ public class MysqlRiadokKosikDao implements RiadokKosikDao {
 
     @Override
     public List<RiadokKosik> getAll() {
-        String sql = "SELECT id, nazov, pocet, cena FROM kosik";
+        String sql = "SELECT id, nazov, pocet, cena FROM polozky_kosika";
         List<RiadokKosik> riadkyKosika = jdbcTemplate.query(sql, new RowMapper<RiadokKosik>() {
             @Override
             public RiadokKosik mapRow(ResultSet rs, int i) throws SQLException {
@@ -29,39 +27,40 @@ public class MysqlRiadokKosikDao implements RiadokKosikDao {
                 riadokKosik.setPocet(rs.getInt("pocet"));
                 riadokKosik.setCena(rs.getDouble("cena"));
                 return riadokKosik;
-            }            
+            }
         });
         return riadkyKosika;
     }
 
     @Override
     public boolean deleteById(Long id) {
-         String sql = "DELETE FROM kosik WHERE id = " + id;
+        String sql = "DELETE FROM polozky_kosika WHERE id = " + id;
         try {
             int zmazanych = jdbcTemplate.update(sql);
             return zmazanych == 1;
         } catch (Exception e) {
             return false;
         }
-    
+
     }
 
     @Override
     public void save(RiadokKosik riadokKosik) throws DaoException {
         if (riadokKosik == null) {
             return;
-        }       
+        }
         if (riadokKosik.getId() == null) {
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-            simpleJdbcInsert.withTableName("kosik");
+            simpleJdbcInsert.withTableName("polozky_kosika");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
-            simpleJdbcInsert.usingColumns("nazov","pocet","cena");           
-            String sql = "INSERT kosik(nazov,pocet,cena) VALUES (?,?,?)";
-            jdbcTemplate.update(sql,riadokKosik.getNazov(),riadokKosik.getPocet(),riadokKosik.getCena());         
+            simpleJdbcInsert.usingColumns("nazov", "pocet", "cena");
+            String sql = "INSERT polozky_kosika(nazov,pocet,cena) VALUES (?,?,?)";
+            jdbcTemplate.update(sql, riadokKosik.getNazov(), riadokKosik.getPocet(), riadokKosik.getCena());
         } else {
-             // UPDATE
-            String sql = "UPDATE kosik SET nazov = ?,pocet= ?, cena = ?  WHERE id = " + riadokKosik.getId();
-            jdbcTemplate.update(sql, riadokKosik.getNazov(),riadokKosik.getPocet(),riadokKosik.getCena());
-        }    }
+            // UPDATE
+            String sql = "UPDATE polozky_kosika SET nazov = ?,pocet= ?, cena = ?  WHERE id = " + riadokKosik.getId();
+            jdbcTemplate.update(sql, riadokKosik.getNazov(), riadokKosik.getPocet(), riadokKosik.getCena());
+        }
+    }
 
 }

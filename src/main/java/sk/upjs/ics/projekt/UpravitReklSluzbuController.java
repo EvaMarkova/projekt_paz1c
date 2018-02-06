@@ -1,4 +1,3 @@
-
 package sk.upjs.ics.projekt;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
@@ -9,22 +8,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-
-
-
 class UpravitReklSluzbuController {
+
     private JdbcTemplate jdbcTemplate;
     private Long id;
-    
+
     public UpravitReklSluzbuController(Long id) {
         this.id = id;
     }
-    
+
     @FXML
     private Button homeButton;
 
@@ -32,7 +30,7 @@ class UpravitReklSluzbuController {
     private TextField nazovSluzbyTextField;
 
     @FXML
-    private TextField popisSluzbyTextField;
+    private TextArea popisSluzbyTextArea;
 
     @FXML
     private Button upravitSluzbuButton;
@@ -42,7 +40,7 @@ class UpravitReklSluzbuController {
 
     @FXML
     void initialize() {
-        
+
         homeButton.setOnAction(eh -> {
             DruhSluzbyAdminSceneController controller = new DruhSluzbyAdminSceneController();
             try {
@@ -61,37 +59,37 @@ class UpravitReklSluzbuController {
                 iOException.printStackTrace();
             }
         });
-        
-        if (jdbcTemplate == null) {
-                MysqlDataSource dataSource = new MysqlDataSource();
-                dataSource.setUser("projekt_user");
-                dataSource.setPassword("paz1cisgreat");
-                dataSource.setDatabaseName("projekt");
-                jdbcTemplate = new JdbcTemplate(dataSource);
-            }
-         
-            String sql = "SELECT nazov FROM reklamne_sluzby WHERE id = " + id;
-            String nazov = jdbcTemplate.queryForObject(sql, String.class);
-            sql = "SELECT popis FROM reklamne_sluzby WHERE id = " + id;
-            String popis = jdbcTemplate.queryForObject(sql, String.class);
-            sql = "SELECT cena FROM reklamne_sluzby WHERE id = " + id;
-            String cena = jdbcTemplate.queryForObject(sql, String.class);
-            
-            nazovSluzbyTextField.setText(nazov);
-            
-            popisSluzbyTextField.setText(popis);
-            
-            cenaTextField.setText(cena);
 
-            upravitSluzbuButton.setOnAction(eh -> {
-           
-               String novyNazov = nazovSluzbyTextField.getText();
-               String novyPopis = popisSluzbyTextField.getText();
-               String novaCena = cenaTextField.getText();
-               String novySql = "UPDATE reklamne_sluzby SET nazov = ?, popis = ?, cena = ?  WHERE id = " + id;
-               jdbcTemplate.update(novySql, novyNazov, novyPopis, Double.parseDouble(novaCena));
-                
-               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        if (jdbcTemplate == null) {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser("projekt_user");
+            dataSource.setPassword("paz1cisgreat");
+            dataSource.setDatabaseName("projekt");
+            jdbcTemplate = new JdbcTemplate(dataSource);
+        }
+
+        String sql = "SELECT nazov FROM reklamne_sluzby WHERE id = " + id;
+        String nazov = jdbcTemplate.queryForObject(sql, String.class);
+        sql = "SELECT popis FROM reklamne_sluzby WHERE id = " + id;
+        String popis = jdbcTemplate.queryForObject(sql, String.class);
+        sql = "SELECT cena FROM reklamne_sluzby WHERE id = " + id;
+        String cena = jdbcTemplate.queryForObject(sql, String.class);
+
+        nazovSluzbyTextField.setText(nazov);
+        popisSluzbyTextArea.wrapTextProperty().set(true);
+        popisSluzbyTextArea.setText(popis);
+
+        cenaTextField.setText(cena);
+
+        upravitSluzbuButton.setOnAction(eh -> {
+
+            String novyNazov = nazovSluzbyTextField.getText();
+            String novyPopis = popisSluzbyTextArea.getText();
+            String novaCena = cenaTextField.getText();
+            String novySql = "UPDATE reklamne_sluzby SET nazov = ?, popis = ?, cena = ?  WHERE id = " + id;
+            jdbcTemplate.update(novySql, novyNazov, novyPopis, Double.parseDouble(novaCena));
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("AGRO Metlife - Informácia");
             alert.setHeaderText(null);
             alert.setContentText("Podarilo sa upraviť vybratú reklamnú službu.");
@@ -116,11 +114,7 @@ class UpravitReklSluzbuController {
                 iOException.printStackTrace();
             }
 
-                
-                
-                
-            });
+        });
     }
-    
-    
+
 }
